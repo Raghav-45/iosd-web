@@ -120,3 +120,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes autoRotateY {
+  from {
+    transform: translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(360deg);
+  }
+}
+
+.sphere.auto-rotating {
+  animation: autoRotateY var(--rotation-duration, 40s) linear infinite;
+}
+
+.sphere.auto-rotating.paused {
+  animation-play-state: paused;
+}
