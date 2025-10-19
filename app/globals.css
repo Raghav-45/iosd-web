@@ -154,3 +154,54 @@
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--primary)) hsl(var(--background));
 }
+
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background)); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary)),
+    hsl(var(--primary-foreground))
+  );
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary)),
+    hsl(var(--primary))
+  );
+  filter: brightness(0.9);
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+}
+
+@keyframes autoRotateY {
+  from {
+    transform: translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: translateZ(calc(var(--radius) * -1)) rotateX(0deg) rotateY(360deg);
+  }
+}
+
+.sphere.auto-rotating {
+  animation: autoRotateY var(--rotation-duration, 40s) linear infinite;
+}
+
+.sphere.auto-rotating.paused {
+  animation-play-state: paused;
+}
