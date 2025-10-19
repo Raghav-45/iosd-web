@@ -237,7 +237,7 @@ export default function DomeGallery({
 
   const startAutoRotate = useCallback(() => {
     if (!autoRotate || focusedElRef.current || draggingRef.current) return;
-    
+
     stopAutoRotate();
     setIsAutoRotating(true);
 
@@ -402,7 +402,7 @@ export default function DomeGallery({
         stopAutoRotate();
 
         const evt = event as PointerEvent;
-        pointerTypeRef.current = (evt.pointerType as any) || 'mouse';
+        pointerTypeRef.current = (evt.pointerType as "mouse" | "pen" | "touch") || 'mouse';
         if (pointerTypeRef.current === 'touch') evt.preventDefault();
         if (pointerTypeRef.current === 'touch') lockScroll();
         draggingRef.current = true;
@@ -454,7 +454,7 @@ export default function DomeGallery({
             }
           }
 
-          let [vMagX, vMagY] = velArr;
+          const [vMagX, vMagY] = velArr;
           const [dirX, dirY] = dirArr;
           let vx = vMagX * dirX;
           let vy = vMagY * dirY;
@@ -471,7 +471,7 @@ export default function DomeGallery({
             // Resume auto-rotation if no significant inertia
             setTimeout(() => startAutoRotate(), 1000);
           }
-          
+
           startPosRef.current = null;
           cancelTapRef.current = !isTap;
 
@@ -532,7 +532,7 @@ export default function DomeGallery({
     };
 
     el.style.visibility = 'hidden';
-    (el.style as any).zIndex = 0;
+    el.style.zIndex = "0";
 
     const overlay = document.createElement('div');
     overlay.className = 'enlarge';
@@ -540,148 +540,164 @@ export default function DomeGallery({
 
     const rawSrc = parent.dataset.src || (el.querySelector('img') as HTMLImageElement)?.src || '';
     const rawAlt = parent.dataset.alt || (el.querySelector('img') as HTMLImageElement)?.alt || '';
-const contentDiv = document.createElement('div');
-  contentDiv.style.width = '100%';
-  contentDiv.style.height = '100%';
-  contentDiv.style.position = 'relative';
+    const contentDiv = document.createElement('div');
+    contentDiv.style.width = '100%';
+    contentDiv.style.height = '100%';
+    contentDiv.style.position = 'relative';
 
-  overlay.appendChild(contentDiv);
-  if (viewerRef.current) {
-    viewerRef.current.style.pointerEvents = 'auto';
-    viewerRef.current.appendChild(overlay);
-  }
+    overlay.appendChild(contentDiv);
+    if (viewerRef.current) {
+      viewerRef.current.style.pointerEvents = 'auto';
+      viewerRef.current.appendChild(overlay);
+    }
 
-  const reactRoot = createRoot(contentDiv);
-  
-  // Create a temporary image to analyze colors
-  const tempImg = new Image();
-  tempImg.crossOrigin = 'anonymous';
-  tempImg.src = rawSrc;
+    const reactRoot = createRoot(contentDiv);
 
-  // Add this utility function to your component file
+    // Create a temporary image to analyze colors
+    const tempImg = new Image();
+    tempImg.crossOrigin = 'anonymous';
+    tempImg.src = rawSrc;
+
+    // Add this utility function to your component file
     const getAverageRGB = (imgEl: HTMLImageElement): { r: number; g: number; b: number } => {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    
-    if (!context) return { r: 0, g: 0, b: 0 };
-    
-    const width = canvas.width = imgEl.naturalWidth || imgEl.width;
-    const height = canvas.height = imgEl.naturalHeight || imgEl.height;
-    
-    context.drawImage(imgEl, 0, 0, width, height);
-    
-    const imageData = context.getImageData(0, 0, width, height);
-    const data = imageData.data;
-    let r = 0, g = 0, b = 0;
-    
-    // Sample every 10th pixel for performance
-    for (let i = 0; i < data.length; i += 40) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      if (!context) return { r: 0, g: 0, b: 0 };
+
+      const width = canvas.width = imgEl.naturalWidth || imgEl.width;
+      const height = canvas.height = imgEl.naturalHeight || imgEl.height;
+
+      context.drawImage(imgEl, 0, 0, width, height);
+
+      const imageData = context.getImageData(0, 0, width, height);
+      const data = imageData.data;
+      let r = 0, g = 0, b = 0;
+
+      // Sample every 10th pixel for performance
+      for (let i = 0; i < data.length; i += 40) {
         r += data[i];
         g += data[i + 1];
         b += data[i + 2];
-    }
-    
-    const pixelCount = data.length / 40;
-    return {
+      }
+
+      const pixelCount = data.length / 40;
+      return {
         r: Math.floor(r / pixelCount),
         g: Math.floor(g / pixelCount),
         b: Math.floor(b / pixelCount)
-    };
+      };
     };
 
     // Calculate luminance to determine if background is light or dark
     const getLuminance = (r: number, g: number, b: number): number => {
-    const a = [r, g, b].map(v => {
+      const a = [r, g, b].map(v => {
         v /= 255;
         return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-    });
-    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+      });
+      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
     };
 
     // Determine text color based on background luminance
     const getContrastColor = (r: number, g: number, b: number): string => {
-    const luminance = getLuminance(r, g, b);
-    return luminance > 0.5 ? '#000000' : '#FFFFFF';
+      const luminance = getLuminance(r, g, b);
+      return luminance > 0.5 ? '#000000' : '#FFFFFF';
     };
 
-  
-  tempImg.onload = () => {
-    const rgb = getAverageRGB(tempImg);
-    const textColor = getContrastColor(rgb.r, rgb.g, rgb.b);
-    
-    reactRoot.render(
-      <PixelCard className="w-full h-full">
-        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-          <img
-            src={rawSrc}
-            alt={rawAlt}
-            draggable={false}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              filter: grayscale ? 'grayscale(1)' : 'none',
-              display: 'block'
-            }}
-          />
 
-          <div
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              padding: '12px 16px',
-              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.65) 100%)',
-              color: '#fff',
-              fontSize: '16px',
-              fontWeight: 600,
-              pointerEvents: 'none'
-            }}
-            aria-hidden
-          >
-            {rawAlt || ''}
-          </div>
+    tempImg.onload = () => {
+      const rgb = getAverageRGB(tempImg);
+      const textColor = getContrastColor(rgb.r, rgb.g, rgb.b);
 
-          <div
-            className="contact-info-overlay"
-            style={{
-              position: 'absolute',
-              right: 12,
-              top: 12,
-              color: textColor, // Dynamic color based on image
-              padding: '12px 16px',
-              borderRadius: 12,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 6,
-              opacity: 0,
-              transition: 'opacity 200ms ease',
-              pointerEvents: 'none'
-            }}
-            aria-hidden
-          >
-            <div className='cursor-target' style={{ fontSize: 40, fontWeight: 700 }}>Jane Doe</div>
-            <div className='cursor-target' style={{ fontSize: 20, opacity: 0.95 }}>Senior Designer</div>
-            <div className='cursor-target' style={{ fontSize: 11, opacity: 0.85, marginTop: 4, display: 'flex', gap: '5px', justifyContent: 'space-around' }}>
-              <Github color={textColor} />
-              <Linkedin color={textColor} />
-              <X color={textColor} />
+      reactRoot.render(
+        <PixelCard className="w-full h-full">
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <img
+              src={rawSrc}
+              alt={rawAlt}
+              draggable={false}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                filter: grayscale ? 'grayscale(1)' : 'none',
+                display: 'block'
+              }}
+            />
+
+            <div
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 0,
+                padding: '12px 16px',
+                background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.65) 100%)',
+                color: '#fff',
+                fontSize: '16px',
+                fontWeight: 600,
+                pointerEvents: 'none'
+              }}
+              aria-hidden
+            >
+              {rawAlt || ''}
+            </div>
+
+            <div
+              className="contact-info-overlay"
+              style={{
+                position: 'absolute',
+                right: 12,
+                top: 12,
+                color: textColor, // Dynamic color based on image
+                padding: '12px 16px',
+                borderRadius: 12,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 6,
+                opacity: 0,
+                transition: 'opacity 200ms ease',
+                pointerEvents: 'none'
+              }}
+              aria-hidden
+            >
+              <div className='cursor-target' style={{ fontSize: 40, fontWeight: 700 }}>Jane Doe</div>
+              <div className='cursor-target' style={{ fontSize: 20, opacity: 0.95 }}>Senior Designer</div>
+              <div className='cursor-target' style={{ fontSize: 11, opacity: 0.85, marginTop: 4, display: 'flex', gap: '5px', justifyContent: 'space-around' }}>
+                <Github color={textColor} />
+                <Linkedin color={textColor} />
+                <X color={textColor} />
+              </div>
             </div>
           </div>
-        </div>
-      </PixelCard>
-    );
-  };
-  
-  // Fallback if image fails to load
-  tempImg.onerror = () => {
-    reactRoot.render(
-      // ... your existing render code with default white color ...
-    );
-  };
+        </PixelCard>
+      );
+    };
 
-    (overlay as any).__reactRoot = reactRoot;
+    // Fallback if image fails to load
+    tempImg.onerror = () => {
+      reactRoot.render(
+        <PixelCard className="w-full h-full">
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <img
+              src={rawSrc}
+              alt={rawAlt}
+              draggable={false}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                filter: grayscale ? 'grayscale(1)' : 'none',
+                display: 'block'
+              }}
+            />
+          </div>
+        </PixelCard>
+        // ... your existing render code with default white color ...
+      );
+    };
+
+    (overlay as HTMLDivElement & { __reactRoot?: Root }).__reactRoot = reactRoot;
 
     const tx0 = tileR.left - frameR.left;
     const ty0 = tileR.top - frameR.top;
@@ -747,10 +763,10 @@ const contentDiv = document.createElement('div');
 
       const originalPos = originalTilePositionRef.current;
       if (!originalPos) {
-        const mountedRoot = (overlay as any).__reactRoot as Root | undefined;
+        const mountedRoot = (overlay as HTMLDivElement & { __reactRoot?: Root }).__reactRoot as Root | undefined;
         try {
           if (mountedRoot) mountedRoot.unmount();
-        } catch (e) {
+        } catch {
           /* ignore */
         }
         overlay.remove();
@@ -759,7 +775,7 @@ const contentDiv = document.createElement('div');
         parent.style.setProperty('--rot-y-delta', `0deg`);
         parent.style.setProperty('--rot-x-delta', `0deg`);
         el.style.visibility = '';
-        (el.style as any).zIndex = 0;
+        el.style.zIndex = '0';
         focusedElRef.current = null;
         rootRef.current?.removeAttribute('data-enlarging');
         openingRef.current = false;
@@ -813,10 +829,10 @@ const contentDiv = document.createElement('div');
         animatingOverlay.appendChild(img);
       }
 
-      const mountedRoot = (overlay as any).__reactRoot as Root | undefined;
+      const mountedRoot = (overlay as HTMLDivElement & { __reactRoot?: Root }).__reactRoot as Root | undefined;
       try {
         if (mountedRoot) mountedRoot.unmount();
-      } catch (e) {
+      } catch {
         /* ignore */
       }
 
@@ -849,7 +865,7 @@ const contentDiv = document.createElement('div');
         requestAnimationFrame(() => {
           el.style.visibility = '';
           el.style.opacity = '0';
-          (el.style as any).zIndex = 0;
+          el.style.zIndex = '0';
           focusedElRef.current = null;
           rootRef.current?.removeAttribute('data-enlarging');
 
@@ -988,12 +1004,12 @@ const contentDiv = document.createElement('div');
         className="sphere-root relative w-full h-full"
         style={
           {
-            ['--segments-x' as any]: segments,
-            ['--segments-y' as any]: segments,
-            ['--overlay-blur-color' as any]: overlayBlurColor,
-            ['--tile-radius' as any]: imageBorderRadius,
-            ['--enlarge-radius' as any]: openedImageBorderRadius,
-            ['--image-filter' as any]: grayscale ? 'grayscale(1)' : 'none'
+            '--segments-x': segments,
+            '--segments-y': segments,
+            '--overlay-blur-color': overlayBlurColor,
+            '--tile-radius': imageBorderRadius,
+            '--enlarge-radius': openedImageBorderRadius,
+            '--image-filter': grayscale ? 'grayscale(1)' : 'none'
           } as React.CSSProperties
         }
       >
@@ -1019,10 +1035,10 @@ const contentDiv = document.createElement('div');
                   data-size-y={it.sizeY}
                   style={
                     {
-                      ['--offset-x' as any]: it.x,
-                      ['--offset-y' as any]: it.y,
-                      ['--item-size-x' as any]: it.sizeX,
-                      ['--item-size-y' as any]: it.sizeY,
+                      '--offset-x': it.x,
+                      '--offset-y': it.y,
+                      '--item-size-x': it.sizeX,
+                      '--item-size-y': it.sizeY,
                       top: '-999px',
                       bottom: '-999px',
                       left: '-999px',
