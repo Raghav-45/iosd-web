@@ -53,3 +53,5 @@ export const AchievementCard = React.memo(
     </div>
   )
 );
+
+AchievementCard.displayName = "AchievementCard";
