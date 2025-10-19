@@ -1,4 +1,5 @@
-import AchievementsCardStack from '@/components/AchievementsCardStack'
+import MatrixText from '@/components/kokonutui/matrix-text'
+import { AchievementCards } from '@/components/achievements/AchievementCards'
 import { Achievement } from '@/types/achievements'
 import React from 'react'
 
@@ -30,7 +31,41 @@ const achievements: Achievement[] = [
                     }
                 ],
                 position: "Participant"
-            }
+            },
+            {
+                team_name: "Open Source Contributors",
+                image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                members: [
+                    {
+                        name: "Alice Johnson",
+                        role: "Contributor",
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                    },
+                    {
+                        name: "Bob Smith",
+                        role: "Contributor",
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                    }
+                ],
+                position: "Participant"
+            },
+            {
+                team_name: "Open Source Contributors",
+                image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                members: [
+                    {
+                        name: "Alice Johnson",
+                        role: "Contributor",
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                    },
+                    {
+                        name: "Bob Smith",
+                        role: "Contributor",
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                    }
+                ],
+                position: "Participant"
+            },
         ],
         tags: ["Hacktoberfest", "Open Source", "2023"]
     },
@@ -71,7 +106,7 @@ const achievements: Achievement[] = [
         id: "3",
         event_name: "IEEE Xtreme 17.0",
         location_of_event: "Online",
-        description_of_event: "Participated in IEEE Xtreme 17.0, a 24-hour coding competition organized by IEEE.",
+        description_of_event: "Participated in IEEE Xtreme 17.0, a 24-hour coding competitikldnffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffl sdjklllllllllllllll jskdlnf vj rlwefkdnvreilkjfsviheorkfeojlkferhiglkejkfnfkldfl;jdfnlksdj;fjsdfjdslfjksd;lkf sdlkflkjd fjdslkj fdslkjfljk dslkj dson organized by IEEE.",
         images: [
             "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
         ],
@@ -102,12 +137,34 @@ const achievements: Achievement[] = [
     }
 ]
 
-const page = () => {
+interface PageProps {
+    searchParams: Promise<{
+        tag?: string;
+        location?: string;
+    }>
+}
+
+const page = async ({ searchParams }: PageProps) => {
+    const { tag, location } = await searchParams;
+
+    console.log("Search Params:", { tag, location });
+    let filteredAchievements = achievements;
+
+    if (tag) {
+        filteredAchievements = filteredAchievements.filter(achievement =>
+            achievement.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
+        );
+    }
+    if (location) {
+        filteredAchievements = filteredAchievements.filter(achievement =>
+            achievement.location_of_event.toLowerCase() === location.toLowerCase()
+        );
+    }
+
     return (
         <div className='min-h-screen w-full flex flex-col items-center justify-start gap-8 py-8 px-4'>
-            <AchievementsCardStack 
-                items={achievements}
-            />
+            <MatrixText text='Achievements'/>
+            <AchievementCards cards={filteredAchievements} />
 
         </div>
     )
