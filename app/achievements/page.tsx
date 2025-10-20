@@ -22,12 +22,22 @@ const achievements: Achievement[] = [
                     {
                         name: "Alice Johnson",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/alicejohnson",
+                            twitter: "https://twitter.com/alicejohnson",
+                            linkedin: "https://linkedin.com/in/alicejohnson"
+                        }
                     },
                     {
                         name: "Bob Smith",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/bobsmith",
+                            twitter: "https://twitter.com/bobsmith",
+                            linkedin: "https://linkedin.com/in/bobsmith"
+                        }
                     }
                 ],
                 position: "Participant"
@@ -39,12 +49,22 @@ const achievements: Achievement[] = [
                     {
                         name: "Alice Johnson",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/alicejohnson",
+                            twitter: "https://twitter.com/alicejohnson",
+                            linkedin: "https://linkedin.com/in/alicejohnson"
+                        }
                     },
                     {
                         name: "Bob Smith",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/bobsmith",
+                            twitter: "https://twitter.com/bobsmith",
+                            linkedin: "https://linkedin.com/in/bobsmith"
+                        }
                     }
                 ],
                 position: "Participant"
@@ -56,12 +76,22 @@ const achievements: Achievement[] = [
                     {
                         name: "Alice Johnson",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/alicejohnson",
+                            twitter: "https://twitter.com/alicejohnson",
+                            linkedin: "https://linkedin.com/in/alicejohnson"
+                        }
                     },
                     {
                         name: "Bob Smith",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/bobsmith",
+                            twitter: "https://twitter.com/bobsmith",
+                            linkedin: "https://linkedin.com/in/bobsmith"
+                        }
                     }
                 ],
                 position: "Participant"
@@ -88,12 +118,22 @@ const achievements: Achievement[] = [
                     {
                         name: "Charlie Brown",
                         role: "Mentor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/charliebrown",
+                            twitter: "https://twitter.com/charliebrown",
+                            linkedin: "https://linkedin.com/in/charliebrown"
+                        }
                     },
                     {
                         name: "Dana White",
                         role: "Contributor",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/danawhite",
+                            twitter: "https://twitter.com/danawhite",
+                            linkedin: "https://linkedin.com/in/danawhite"
+                        }
                     }
                 ],
                 position: "Contributor"
@@ -108,7 +148,11 @@ const achievements: Achievement[] = [
         location_of_event: "Online",
         description_of_event: "Participated in IEEE Xtreme 17.0, a 24-hour coding competitikldnffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffl sdjklllllllllllllll jskdlnf vj rlwefkdnvreilkjfsviheorkfeojlkferhiglkejkfnfkldfl;jdfnlksdj;fjsdfjdslfjksd;lkf sdlkflkjd fjdslkj fdslkjfljk dslkj dson organized by IEEE.",
         images: [
-            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+            "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
         ],
         date: "2023-10-21",
         link: "https://ieeextreme.org/",
@@ -121,12 +165,22 @@ const achievements: Achievement[] = [
                     {
                         name: "Eve Adams",
                         role: "Team Leader",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/eveadams",
+                            twitter: "https://twitter.com/eveadams",
+                            linkedin: "https://linkedin.com/in/eveadams"
+                        }
                     },
                     {
                         name: "Frank Miller",
                         role: "Member",
-                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png"
+                        image: "https://jaladh-singhal.github.io/gsoc20/images/gsoc_logo.png",
+                        socials: {
+                            github: "https://github.com/frankmiller",
+                            twitter: "https://twitter.com/frankmiller",
+                            linkedin: "https://linkedin.com/in/frankmiller"
+                        }
                     }
 
                 ],

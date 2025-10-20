@@ -3,12 +3,20 @@
 import { Achievement } from "@/types/achievements";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, stagger } from "motion/react";
-import { CalendarDaysIcon, Globe2Icon, MapPinIcon, TrophyIcon, XIcon } from "lucide-react";
+import { CalendarDaysIcon, ChevronLeftIcon, ChevronRightIcon, FacebookIcon, GithubIcon, Globe2Icon, InstagramIcon, LinkedinIcon, MapPinIcon, TrophyIcon, TwitterIcon, XIcon, YoutubeIcon } from "lucide-react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { AchievementCard } from "./AchievementCard";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { Separator } from "../ui/separator";
+import { LinkPreview } from "../ui/link-preview";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 
 export const AchievementCards = ({
@@ -118,13 +126,30 @@ export const AchievementCards = ({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <img
-                    width={200}
-                    height={200}
-                    src={active.images[0]}
-                    alt={active.event_name}
-                    className="w-full h-64 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
-                  />
+                  <Carousel className="w-full sm:rounded-tr-lg sm:rounded-tl-lg ">
+                    <CarouselContent>
+                      {active.images.map((image, index) => (
+                        <CarouselItem key={index}>
+                          <img
+                            width={200}
+                            height={200}
+                            src={image}
+                            alt={active.event_name}
+                            className="w-full h-64 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                      <CarouselNext variant={"ghost"} size={"icon"}>
+                        <span className="sr-only">Next</span>
+                        <ChevronRightIcon className="size-6 text-neutral-700 dark:text-neutral-300" />                      
+                      </CarouselNext>
+                    <CarouselPrevious variant={"ghost"} size={"icon"}>
+                      <span className="sr-only">Previous</span>
+                      <ChevronLeftIcon className="size-6 rotate-180 text-neutral-700 dark:text-neutral-300" />
+                    </CarouselPrevious>
+                  </Carousel>
+                  
                 </motion.div>
 
                 <div>
@@ -154,17 +179,20 @@ export const AchievementCards = ({
                       </motion.p>
                     </div>
 
-                    <motion.a
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      href={active.link}
-                      target="_blank"
-                      className="p-2 text-sm rounded-full font-bold bg-green-500 text-white"
+                    <LinkPreview
+                      url={active.link}
+
                     >
-                      <Globe2Icon className="size-6" />
-                    </motion.a>
+                      <motion.div
+                        layout
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="p-2 text-sm rounded-full font-bold bg-green-500 text-white"
+                      >
+                        <Globe2Icon className="size-6" />
+                      </motion.div>
+                    </LinkPreview>
                   </div>
                   <div className="pt-2 relative px-4">
                     <motion.p
@@ -267,6 +295,63 @@ export const AchievementCards = ({
                               <img src={member.image} alt={member.name} className="size-24 aspect-square object-cover rounded-full mb-2" />
                               <p className="font-medium">{member.name}</p>
                               <p className="text-sm text-muted-foreground">{member.role}</p>
+                              {member.socials && <div className="flex items-center space-x-2 mt-2 text-muted-foreground">
+                                {member.socials.github && (
+                                  <LinkPreview
+                                    url={member.socials.github}
+                                  >
+                                    <GithubIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+                                )}
+                                {member.socials.linkedin && (
+                                  <LinkPreview
+                                    url={member.socials.linkedin}
+                                  >
+                                    <LinkedinIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+                                )}
+                                {member.socials.website && (
+                                  <LinkPreview
+                                    url={member.socials.website}
+                                  >
+                                    <Globe2Icon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+                                )}
+                                {member.socials.twitter && (
+                                  <LinkPreview
+                                    url={member.socials.twitter}
+                                  >
+                                    <TwitterIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+
+                                )}
+
+                                {member.socials.instagram && (
+                                  <LinkPreview
+                                    url={member.socials.instagram}
+                                  >
+                                    <InstagramIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+
+                                  </LinkPreview>
+                                )}
+                                {member.socials.facebook && (
+                                  <LinkPreview
+
+                                    url={member.socials.facebook}
+                                  >
+                                    <FacebookIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+                                )}
+
+                                {member.socials.youtube && (
+                                  <LinkPreview
+                                    url={member.socials.youtube}
+                                  >
+                                    <YoutubeIcon className="size-5 cursor-pointer text-muted-foreground hover:text-foreground transition" />
+                                  </LinkPreview>
+                                )}
+                              </div>}
+
                             </div>
                           ))}
                         </div>

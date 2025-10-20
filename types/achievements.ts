@@ -13,6 +13,15 @@ export interface Achievement {
             name: string;
             role: string;
             image: string;
+            socials: {
+                github?: string;
+                linkedin?: string;
+                twitter?: string;
+                website?: string;
+                instagram?: string;
+                facebook?: string;
+                youtube?: string;
+            }
         }[];
         position: string;
     }[];
