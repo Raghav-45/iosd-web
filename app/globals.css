@@ -122,6 +122,15 @@
 }
 
 
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -170,4 +179,34 @@
 
 .sphere.auto-rotating.paused {
   animation-play-state: paused;
+}
+
+
+#home {
+    @apply relative ;
+
+    .media {
+      @apply relative lg:overflow-hidden max-w-screen;
+
+      video {
+        @apply w-full object-cover object-center;
+      }
+
+      .mask {
+        @apply absolute h-full top-0 lg:-top-20 xl:top-0;
+
+        img {
+          @apply h-full scale-150 lg:scale-100;
+          transform: matrix(80, 0, 0, 80, 0, 0);
+        }
+
+        @media (max-width: 1024px) {
+          img {
+            transform: matrix(1, 0, 0, 1, 0, 0);
+          }
+        }
+      }
+    }
+
+    
 }
