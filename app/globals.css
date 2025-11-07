@@ -41,7 +41,23 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;
+    }
+  }
+  --animate-meteor: meteor 5s linear infinite
+;
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;}
+  70% {
+    opacity: 1;}
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;}}}
 
 :root {
   --radius: 0.625rem;
@@ -121,7 +137,6 @@
   }
 }
 
-
 html {
   width: 100vw;
   overflow-x: hidden;
@@ -181,7 +196,6 @@ body {
   animation-play-state: paused;
 }
 
-
 #home {
     @apply relative ;
 
@@ -208,5 +222,4 @@ body {
       }
     }
 
-    
 }
