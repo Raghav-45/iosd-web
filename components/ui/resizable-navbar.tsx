@@ -137,7 +137,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-gradient-to-bl from-blue-800 to-gray-800"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -242,10 +242,9 @@ export const NavbarLogo = () => {
       <img
         src="/logo.png"
         alt="logo"
-        width={30}
+        width={80}
         height={30}
       />
-      <span className="font-medium text-black dark:text-white">IOSD</span>
     </Link>
   );
 };
