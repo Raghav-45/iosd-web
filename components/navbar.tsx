@@ -28,6 +28,14 @@ export function Navbar() {
             name: "Alumini",
             link: "/alumini",
         },
+        {
+            name: "Achievements",
+            link: "/achievements",
+        },
+        {
+            name: "Events",
+            link: "/events",
+        },
     ];
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,15 +43,11 @@ export function Navbar() {
 
     return (
         <div className="relative w-full">
-            <Nav>
+            <Nav className="bg-gradient-to-t from-bg-[#090a0e] to-black">
                 {/* Desktop Navigation */}
                 <NavBody>
                     <NavbarLogo />
                     <NavItems items={navItems} />
-                    <div className="flex items-center gap-4">
-                        <NavbarButton variant="secondary" onClick={() => router.push("/achievements")} onMouseEnter={() => router.prefetch("/achievements")}>Achievements</NavbarButton>
-                        <NavbarButton variant="primary" onClick={() => router.push("/events")} onMouseEnter={() => router.prefetch("/events")}>Events</NavbarButton>
-                    </div>
                 </NavBody>
 
                 {/* Mobile Navigation */}
@@ -71,22 +75,6 @@ export function Navbar() {
                                 <span className="block">{item.name}</span>
                             </Link>
                         ))}
-                        <div className="flex w-full flex-col gap-4">
-                            <NavbarButton
-                                onClick={() => { setIsMobileMenuOpen(false); router.push("/achievements"); }}
-                                variant="primary"
-                                className="w-full"
-                            >
-                                Achievements
-                            </NavbarButton>
-                            <NavbarButton
-                                onClick={() => { setIsMobileMenuOpen(false); router.push("/events"); }}
-                                variant="primary"
-                                className="w-full"
-                            >
-                                Events
-                            </NavbarButton>
-                        </div>
                     </MobileNavMenu>
                 </MobileNav>
             </Nav>
