@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './join-us-button.module.css';
 
-interface JoinUsButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type JoinUsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const JoinUsButton: React.FC<JoinUsButtonProps> = (props) => {
   return (

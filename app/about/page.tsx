@@ -4,6 +4,7 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
+import { Testimonial } from "@/components/ui/design-testimonial";
 import { JoinUsButton } from "@/components/join-us-button";
 import { ABOUT_EVENTS, DOMAINS } from "@/lib/config";
 import {
@@ -53,7 +54,7 @@ const Notification = ({ name, description, icon, color, time }: NotificationProp
           </p>
         </div>
       </div>
-    </figure>
+    </figure> 
   );
 };
 
@@ -150,6 +151,11 @@ export default function AboutPage() {
             <BentoCard key={feature.name} {...feature} />
           ))}
         </BentoGrid>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="w-full">
+        <Testimonial />
       </section>
 
       {/* CTA Section */}
