@@ -1,12 +1,11 @@
 import TargetCursor from '@/components/TargetCursor'
 import { FloatingDock } from '@/components/ui/floating-dock'
 import {
-  IconBrandGithub,
-  IconBrandX,
-  IconExchange,
+  IconCalendar,
   IconHome,
-  IconNewSection,
-  IconTerminal2,
+  IconInfoCircle,
+  IconSchool,
+  IconUsers,
 } from '@tabler/icons-react'
 
 const links = [
@@ -15,54 +14,35 @@ const links = [
     icon: (
       <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '#',
+    href: '/',
   },
   {
-    title: 'Products',
+    title: 'About',
     icon: (
-      <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '#',
+    href: '/about',
   },
   {
-    title: 'Components',
+    title: 'Events',
     icon: (
-      <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconCalendar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '#',
+    href: '/events',
   },
   {
-    title: 'Aceternity UI',
+    title: 'Team',
     icon: (
-      <img
-        src="https://assets.aceternity.com/logo-dark.png"
-        width={20}
-        height={20}
-        alt="Aceternity Logo"
-      />
+      <IconUsers className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '#',
+    href: '/team',
   },
   {
-    title: 'Changelog',
+    title: 'Alumni',
     icon: (
-      <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconSchool className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '#',
-  },
-  {
-    title: 'Twitter',
-    icon: (
-      <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: '#',
-  },
-  {
-    title: 'GitHub',
-    icon: (
-      <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: '#',
+    href: '/alumini',
   },
 ]
 
