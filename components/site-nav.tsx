@@ -37,7 +37,7 @@ const links = [
     icon: (
       <IconSchool className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: '/alumini',
+    href: '/alumni',
   },
   {
     title: 'About',

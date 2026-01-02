@@ -137,14 +137,14 @@ export default function AboutPage() {
       <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden rounded-md">
         <div className="z-10 flex flex-col items-center gap-4 text-center px-4">
           <h1 className="text-5xl font-bold tracking-tighter sm:text-7xl bg-clip-text text-transparent bg-linear-to-b from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-500">
-            About IOSD MAIT
+            About Us
           </h1>
           <p className="max-w-[600px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-neutral-400">
-            International Organization of Software Developers
+            IOSD at MAIT
           </p>
-          <p className="max-w-[800px] text-lg font-medium text-primary">
+          {/* <p className="max-w-[800px] text-lg font-medium text-primary">
             &quot;We are a bunch of students pledged to enrich the development culture.&quot;
-          </p>
+          </p> */}
         </div>
         <DotPattern
           className={cn(
@@ -159,7 +159,7 @@ export default function AboutPage() {
           baseVelocity={3}
           className="font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-20"
         >
-          Development Oriented • Student Organization • Open Source • Mentorship • Innovation •&nbsp;
+          Development • Student Lead • Mentorship • Innovation •&nbsp;
         </ScrollVelocityRow>
       </section>
 
