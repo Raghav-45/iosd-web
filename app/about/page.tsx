@@ -5,54 +5,12 @@ import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { JoinUsButton } from "@/components/join-us-button";
+import { ABOUT_EVENTS, DOMAINS } from "@/lib/config";
 import {
-  Code,
-  Smartphone,
-  Database,
-  Layout,
   Calendar,
   Users,
   Trophy,
 } from "lucide-react";
-
-const domains = [
-  {
-    Icon: Code,
-    name: "Web Development",
-    description: "Building modern, scalable web applications using the latest tech stacks.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-span-2",
-  },
-  {
-    Icon: Smartphone,
-    name: "Android Dev",
-    description: "Crafting native mobile experiences for the Android ecosystem.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-span-1",
-  },
-  {
-    Icon: Database,
-    name: "DSA & CP",
-    description: "Mastering algorithms and competing in global coding contests.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-span-1",
-  },
-  {
-    Icon: Layout,
-    name: "UI/UX Design",
-    description: "Designing intuitive and beautiful user interfaces.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
-    className: "lg:col-span-2",
-  },
-];
 
 interface NotificationProps {
   name: string;
@@ -98,37 +56,6 @@ const Notification = ({ name, description, icon, color, time }: NotificationProp
     </figure>
   );
 };
-
-const events = [
-  {
-    name: "Impulse '25",
-    description: "Flagship technical fest with 1000+ participants.",
-    time: "Upcoming",
-    icon: "🚀",
-    color: "#00C9A7",
-  },
-  {
-    name: "Web Dev SIG",
-    description: "Special Interest Group for Full Stack Development.",
-    time: "Ongoing",
-    icon: "💻",
-    color: "#FFB800",
-  },
-  {
-    name: "HackMAIT 4.0",
-    description: "24-hour hackathon solving real-world problems.",
-    time: "2m ago",
-    icon: "🏆",
-    color: "#FF3D71",
-  },
-  {
-    name: "Tech Talk",
-    description: "Session on System Design by Alumni.",
-    time: "5m ago",
-    icon: "🎤",
-    color: "#1E86FF",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -205,7 +132,7 @@ export default function AboutPage() {
           </div>
           <div className="relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg border bg-background p-6 shadow-lg">
             <AnimatedList>
-              {events.map((item, idx) => (
+              {ABOUT_EVENTS.map((item, idx) => (
                 <Notification {...item} key={idx} />
               ))}
             </AnimatedList>
@@ -219,7 +146,7 @@ export default function AboutPage() {
           Technical Domains
         </h2>
         <BentoGrid className="lg:grid-rows-2">
-          {domains.map((feature) => (
+          {DOMAINS.map((feature) => (
             <BentoCard key={feature.name} {...feature} />
           ))}
         </BentoGrid>

@@ -5,69 +5,7 @@ import { MagicCard } from "@/components/ui/magic-card";
 import { JoinUsButton } from "@/components/join-us-button";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
-
-const teamMembers = [
-  {
-    name: "Alex Morgan",
-    role: "Lead Developer",
-    image: "https://avatars.githubusercontent.com/u/16860528",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-  {
-    name: "Sarah Chen",
-    role: "UI/UX Designer",
-    image: "https://avatars.githubusercontent.com/u/20110627",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-  {
-    name: "James Wilson",
-    role: "Backend Engineer",
-    image: "https://avatars.githubusercontent.com/u/106103625",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-  {
-    name: "Emily Davis",
-    role: "Product Manager",
-    image: "https://avatars.githubusercontent.com/u/59228569",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-  {
-    name: "Michael Brown",
-    role: "DevOps Specialist",
-    image: "https://avatars.githubusercontent.com/u/12345678",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-  {
-    name: "Jessica Taylor",
-    role: "Frontend Developer",
-    image: "https://avatars.githubusercontent.com/u/87654321",
-    socials: {
-      github: "#",
-      linkedin: "#",
-      twitter: "#",
-    },
-  },
-];
+import { TEAM_MEMBERS } from "@/lib/config";
 
 export default function TeamPage() {
   return (
@@ -98,7 +36,7 @@ export default function TeamPage() {
       {/* Team Grid */}
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {teamMembers.map((member, index) => (
+          {TEAM_MEMBERS.map((member, index) => (
             <MagicCard
               key={index}
               className="flex flex-col items-center justify-center p-8 text-center shadow-2xl"

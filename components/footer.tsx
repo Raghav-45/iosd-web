@@ -1,41 +1,5 @@
 import Link from 'next/link'
-import {
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandTwitter,
-} from '@tabler/icons-react'
-
-const footerLinks = [
-  { title: 'Home', href: '/' },
-  { title: 'Events', href: '/events' },
-  { title: 'Team', href: '/team' },
-  { title: 'Alumni', href: '/alumni' },
-  { title: 'About', href: '/about' },
-]
-
-const socialLinks = [
-  {
-    title: 'Twitter',
-    href: 'https://twitter.com',
-    icon: <IconBrandTwitter className="h-5 w-5" />,
-  },
-  {
-    title: 'GitHub',
-    href: 'https://github.com',
-    icon: <IconBrandGithub className="h-5 w-5" />,
-  },
-  {
-    title: 'LinkedIn',
-    href: 'https://linkedin.com',
-    icon: <IconBrandLinkedin className="h-5 w-5" />,
-  },
-  {
-    title: 'Instagram',
-    href: 'https://instagram.com',
-    icon: <IconBrandInstagram className="h-5 w-5" />,
-  },
-]
+import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from '@/lib/config'
 
 export function Footer() {
   return (
@@ -45,14 +9,14 @@ export function Footer() {
           <div className="flex flex-col gap-4 text-center md:text-left">
             <div>
               <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-                IOSD
+                {SITE_CONFIG.name}
               </h3>
               <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-xs">
-                International Organization of Software Developers. Empowering developers worldwide.
+                {SITE_CONFIG.description}
               </p>
             </div>
             <div className="flex justify-center space-x-4 md:justify-start">
-              {socialLinks.map((social) => (
+              {SOCIAL_LINKS.map((social) => (
                 <Link
                   key={social.title}
                   href={social.href}
@@ -69,7 +33,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center gap-4 md:items-end">
             <nav className="flex flex-wrap justify-center gap-6 md:justify-end">
-              {footerLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.title}
                   href={link.href}
@@ -80,14 +44,14 @@ export function Footer() {
               ))}
             </nav>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              contact@iosd.tech
+              {SITE_CONFIG.email}
             </p>
           </div>
         </div>
         
         <div className="mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-800">
           <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
-            &copy; {new Date().getFullYear()} IOSD MAIT. All rights reserved.
+            {SITE_CONFIG.copyright}
           </p>
         </div>
       </div>
