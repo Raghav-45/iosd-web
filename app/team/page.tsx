@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { WordRotate } from "@/components/ui/word-rotate";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { MagicCard } from "@/components/ui/magic-card";
-import { Button } from "@/components/ui/button";
+import { JoinUsButton } from "@/components/join-us-button";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
@@ -148,9 +148,7 @@ export default function TeamPage() {
           <p className="mb-8 text-muted-foreground">
             We are always looking for talented individuals to join our community.
           </p>
-          <Button size="lg" className="rounded-full">
-            Apply Now
-          </Button>
+          <JoinUsButton />
         </div>
       </section>
     </div>

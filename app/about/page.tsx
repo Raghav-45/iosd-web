@@ -4,7 +4,7 @@ import { NumberTicker } from "@/components/ui/number-ticker";
 import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { Button } from "@/components/ui/button";
+import { JoinUsButton } from "@/components/join-us-button";
 import {
   Code,
   Smartphone,
@@ -234,9 +234,7 @@ export default function AboutPage() {
           <p className="mb-8 text-muted-foreground">
             Join IOSD MAIT and be part of the development revolution.
           </p>
-          <Button size="lg" className="rounded-full">
-            Join Us Now
-          </Button>
+          <JoinUsButton />
         </div>
       </section>
     </div>

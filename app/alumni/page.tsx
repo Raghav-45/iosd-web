@@ -3,7 +3,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { Button } from "@/components/ui/button";
+import { JoinUsButton } from "@/components/join-us-button";
 import { 
   Briefcase, 
   Globe,
@@ -84,9 +84,7 @@ export default function AlumniPage() {
             Our legacy continues through you.
           </p>
           <div className="flex items-center gap-4">
-            <Button size="lg" className="rounded-full">
-              Join Network
-            </Button>
+            <JoinUsButton />
             <div className="flex items-center gap-2">
               <AvatarCircles numPeople={99} avatarUrls={avatarUrls} />
             </div>
