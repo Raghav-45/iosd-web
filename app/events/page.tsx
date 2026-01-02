@@ -17,13 +17,6 @@ const links = [
     href: '/',
   },
   {
-    title: 'About',
-    icon: (
-      <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: '/about',
-  },
-  {
     title: 'Events',
     icon: (
       <IconCalendar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
@@ -43,6 +36,13 @@ const links = [
       <IconSchool className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
     href: '/alumini',
+  },
+  {
+    title: 'About',
+    icon: (
+      <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: '/about',
   },
 ]
 
