@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/site-nav";
 import TargetCursor from "@/components/TargetCursor";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <TargetCursor spinDuration={2} hideDefaultCursor={true} />
         {children}
+        <Footer />
         <SiteNav />
       </body>
     </html>
