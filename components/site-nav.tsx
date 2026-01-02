@@ -59,7 +59,7 @@ const SiteNav = ({}) => {
         damping: 12,
         delay: 0.2,
       }}
-      className="absolute bottom-8 flex w-full justify-center"
+      className="fixed bottom-8 flex w-full justify-center"
     >
       <FloatingDock
         mobileClassName="translate-y-20" // only for demo, remove for production

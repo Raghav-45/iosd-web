@@ -1,11 +1,7 @@
-import TargetCursor from '@/components/TargetCursor'
-
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-10">
       <div className="max-w-3xl w-full bg-white p-8 rounded-xl shadow-xl">
-        <TargetCursor spinDuration={2} hideDefaultCursor={true} />
-
         <h1 className="mt-0 mb-3 text-2xl font-semibold">
           Hover over the elements below
         </h1>
