@@ -96,23 +96,23 @@ export default function AboutPage() {
           <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-muted/50">
             <Users className="h-8 w-8 mb-4 text-primary" />
             <h3 className="text-4xl font-bold tracking-tighter">
-              <NumberTicker value={100} />+
+              <NumberTicker value={300} />+
             </h3>
             <p className="text-muted-foreground mt-2">Active Members</p>
           </div>
           <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-muted/50">
             <Calendar className="h-8 w-8 mb-4 text-primary" />
             <h3 className="text-4xl font-bold tracking-tighter">
-              <NumberTicker value={50} />+
+              <NumberTicker value={1000} />+
             </h3>
-            <p className="text-muted-foreground mt-2">Events Organized</p>
+            <p className="text-muted-foreground mt-2">Event Participants</p>
           </div>
           <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-muted/50">
             <Trophy className="h-8 w-8 mb-4 text-primary" />
             <h3 className="text-4xl font-bold tracking-tighter">
-              <NumberTicker value={10} />+
+              <NumberTicker value={500} />+
             </h3>
-            <p className="text-muted-foreground mt-2">Hackathons Won</p>
+            <p className="text-muted-foreground mt-2">Students Mentored</p>
           </div>
         </div>
       </section>
