@@ -1,13 +1,58 @@
+"use client"
+
+import { useState } from "react"
+import { MeshGradient } from "@paper-design/shaders-react"
+import { DotPattern } from "@/components/ui/dot-pattern"
 import { EVENTS } from "@/lib/config/events"
+import { cn } from "@/lib/utils"
 import { EventPreviewCard } from "@/components/events/EventPreviewCard"
+import { GalleryModal } from "@/components/gallery/GalleryModal"
+import { GALLERY_IMAGES, type GalleryImage } from "@/lib/config"
+import { UPCOMING_EVENT } from "@/lib/config/events"
+import { UpcomingEventCard } from "@/components/events/UpcomingEvent"
+import { EventsTimeline } from "@/components/events/EventsTimeline"
+import { GalleryBridge } from "@/components/gallery/GalleryBridge"
 
 const featured = EVENTS.filter(e => e.featured)
 const recent = EVENTS.filter(e => !e.featured)
 
 export default function EventsPage() {
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
+
+  const handleEventClick = () => {
+    if (GALLERY_IMAGES.length > 0) {
+      setSelectedImage(GALLERY_IMAGES[0])
+    }
+  }
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-background">
-      {/* Hero (already done) */}
+      {/* Hero */}
+      <section className="relative flex h-[60vh] items-center justify-center">
+        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
+          <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
+            Events
+          </h1>
+
+          <p className="max-w-xl text-muted-foreground text-lg">
+            Workshops, hackathons, talks, and everything that shapes the IOSD community.
+          </p>
+        </div>
+
+        {/* <MeshGradient
+          className="absolute inset-0 opacity-20"
+          colors={["#000000", "#1a1a2e", "#67bed9", "#ffffff"]}
+          speed={0.8}
+        /> */}
+
+        <DotPattern
+          className={cn(
+            "opacity-40",
+            "mask-[radial-gradient(600px_circle_at_center,white,transparent)]"
+          )}
+        />
+
+      </section>
 
       {/* Featured */}
       <section className="container mx-auto px-4 py-24">
@@ -21,6 +66,7 @@ export default function EventsPage() {
               key={event.id}
               event={event}
               priority
+              onClick={handleEventClick}
             />
           ))}
         </div>
@@ -37,10 +83,30 @@ export default function EventsPage() {
             <EventPreviewCard
               key={event.id}
               event={event}
+              onClick={handleEventClick}
             />
           ))}
         </div>
       </section>
+
+      {UPCOMING_EVENT && (
+        <UpcomingEventCard event={UPCOMING_EVENT} />
+      )}
+
+      {/* More Events */}
+
+      <GalleryModal
+        images={GALLERY_IMAGES}
+        selected={selectedImage}
+        onClose={() => setSelectedImage(null)}
+        onSelect={setSelectedImage}
+      />
+
+
+      <EventsTimeline events={EVENTS} />
+
+      <GalleryBridge />
+
     </div>
   )
 }
