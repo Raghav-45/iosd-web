@@ -38,7 +38,7 @@
   /* Focus */
   --ring: oklch(1 0 0 / 0.3);
 
-  /* ✅ Fonts — FIXED */
+  /* ✅ Fonts -FIXED */
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -99,7 +99,7 @@
 }
 
 /* -----------------------------------------
-   SCROLLBAR — SUBTLE
+   SCROLLBAR -SUBTLE
 ------------------------------------------ */
 ::-webkit-scrollbar {
   width: 4px;

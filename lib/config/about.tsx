@@ -1,8 +1,8 @@
 import {
   Code,
   Database,
-  Layout,
-  Smartphone,
+  Brain,
+  BarChart,
   Users,
   Calendar,
   Trophy,
@@ -19,9 +19,9 @@ export const DOMAINS = [
     className: "lg:col-span-2",
   },
   {
-    Icon: Smartphone,
-    name: "Android Dev",
-    description: "Crafting native mobile experiences for the Android ecosystem.",
+    Icon: Brain,
+    name: "Machine Learning",
+    description: "Building intelligent systems and exploring artificial intelligence.",
     href: "#",
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
@@ -37,9 +37,9 @@ export const DOMAINS = [
     className: "lg:col-span-1",
   },
   {
-    Icon: Layout,
-    name: "UI/UX Design",
-    description: "Designing intuitive and beautiful user interfaces.",
+    Icon: BarChart,
+    name: "Data Science",
+    description: "Analyzing data and extracting insights through statistical methods.",
     href: "#",
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
@@ -86,7 +86,7 @@ export const ABOUT_STATS = [
   },
   {
     Icon: Calendar,
-    value: 1000,
+    value: 9999,
     label: "Event Footfall",
   },
   {
