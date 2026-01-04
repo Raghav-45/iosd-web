@@ -85,6 +85,11 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
 }
 
 
