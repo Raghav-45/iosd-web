@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from '@/lib/config'
 import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
@@ -22,31 +23,27 @@ export function Footer() {
         mouseY.set(Infinity)
       }}
     >
-      {/* Subtle ambient gradient */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--accent-glow)] via-transparent to-transparent opacity-30" />
       
       <div className="relative container mx-auto px-6 pt-24 pb-12 lg:px-12">
-        {/* Main Content Grid */}
         <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr]">
           
-          {/* Left Column - Brand & Description */}
           <div className="flex flex-col gap-8">
             <div className="space-y-6">
-              {/* Organization name - big, light, expressive */}
-              <h2 className="text-5xl font-light tracking-tight text-foreground/95 md:text-6xl lg:text-7xl">
-                {SITE_CONFIG.name.split(' ')[0]}
-                <span className="block text-foreground/60">
-                  {SITE_CONFIG.name.split(' ').slice(1).join(' ')}
-                </span>
-              </h2>
+              <Image
+                src="/IOSD_png.png"
+                alt={SITE_CONFIG.name}
+                width={320}
+                height={320}
+                className="h-auto w-64 md:w-72 lg:w-80"
+                priority
+              />
               
-              {/* Description with controlled width */}
               <p className="max-w-md text-base leading-relaxed text-[var(--text-muted)]">
                 {SITE_CONFIG.description}
               </p>
             </div>
 
-            {/* Social Links - with glow on hover */}
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((social) => (
                 <MagneticSocialIcon
@@ -60,20 +57,16 @@ export function Footer() {
               ))}
             </div>
 
-            {/* Metadata - mono, uppercase, tracked */}
             <div className="mono text-[var(--text-faint)]">
               <p>{SITE_CONFIG.email}</p>
             </div>
           </div>
 
-          {/* Right Column - Navigation */}
           <div className="flex flex-col gap-8 lg:items-end">
-            {/* Section label */}
             <div className="mono text-[var(--text-faint)]">
               Site Navigation
             </div>
 
-            {/* Navigation links - clean, atmospheric */}
             <nav className="flex flex-col gap-3 lg:items-end">
               {NAV_LINKS.map((link) => (
                 <MagneticNavLink
@@ -87,13 +80,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar - subtle separator */}
         <div className="mt-20 flex flex-col items-center gap-4 border-t border-[var(--border-subtle)] pt-8 md:flex-row md:justify-between">
           <p className="mono text-[var(--text-faint)]">
             {SITE_CONFIG.copyright}
           </p>
           
-          {/* Metadata badges */}
           <div className="flex gap-4">
             <span className="mono rounded-sm border-none px-3 py-1 text-[var(--text-faint)]">
               Maharaja Agrasen Institute of Technology
@@ -161,7 +152,6 @@ function MagneticSocialIcon({
         style={{ scale: scaleSpring }}
         className="flex h-10 w-10 items-center justify-center rounded-sm border border-[var(--border)] bg-[var(--surface-1)] transition-colors duration-300 group-hover:border-[var(--accent)] group-hover:bg-[var(--surface-2)]"
       >
-        {/* Glow effect on hover */}
         {hoveredSocial === social.title && (
           <div className="absolute inset-0 rounded-sm bg-[var(--accent)] opacity-20 blur-md transition-opacity" />
         )}
@@ -176,7 +166,6 @@ function MagneticSocialIcon({
   )
 }
 
-// Magnetic Nav Link Component
 function MagneticNavLink({
   link,
   mouseX,

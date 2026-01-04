@@ -86,8 +86,6 @@ export default function AlumniPage() {
           </p>
 
           <div className="mt-4 flex items-center gap-6">
-            <JoinUsButton />
-
             <AvatarCircles
               numPeople={99}
               avatarUrls={avatarUrls}
