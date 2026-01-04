@@ -64,7 +64,7 @@ export const SOCIAL_LINKS = [
   },
   {
     title: 'GitHub',
-    href: 'https://github.com/iosdmait',
+    href: 'https://github.com/iosd-mait',
     icon: <IconBrandGithub className="h-5 w-5" />,
   },
   {
