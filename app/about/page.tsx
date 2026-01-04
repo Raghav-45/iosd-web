@@ -130,20 +130,19 @@ export default function AboutPage() {
           {GALLERY_PREVIEW.map((item, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-lg bg-muted group cursor-pointer ${item.gridClass}`}
+              className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${item.gradient} group-hover:${item.hoverGradient} transition-all duration-300 flex items-center justify-center`}
-              >
-                <span className={item.gridClass.includes("col-span-2") ? "text-6xl" : item.gridClass.includes("aspect-[2/1]") ? "text-5xl" : "text-4xl"}>
-                  {item.emoji}
-                </span>
-              </div>
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               {item.label && (
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                   <p className="text-white font-medium">{item.label}</p>
                 </div>
               )}
+              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
           ))}
         </div>
@@ -153,13 +152,13 @@ export default function AboutPage() {
       <section className="container mx-auto px-4 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-light tracking-tight">Our Mission</h2>
+            <h2 className="text-3xl font-light tracking-tight">{ABOUT_CONTENT.mission.title}</h2>
             <p className="text-muted-foreground">
-              To provide a well-resourced platform for developers to come together, create projects, discuss ideas, and learn in a supportive environment. We aim to bridge the gap between theoretical knowledge and practical development.
+              {ABOUT_CONTENT.mission.description}
             </p>
-            <h2 className="text-3xl font-light tracking-tight pt-4">Our Vision</h2>
+            <h2 className="text-3xl font-light tracking-tight pt-4">{ABOUT_CONTENT.vision.title}</h2>
             <p className="text-muted-foreground">
-              To aggrandize the development purlieu in the country. We pride ourselves on being a student organization that is completely development-oriented, fostering a culture of mentorship and innovation.
+              {ABOUT_CONTENT.vision.description}
             </p>
           </div>
           <div className="relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg border-none bg-background p-6 shadow-lg">
