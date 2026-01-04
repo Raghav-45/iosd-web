@@ -36,20 +36,15 @@ export default function GalleryPage() {
                                 key={category}
                                 onClick={() => setFilter(category)}
                                 className={cn(
-                                    "relative px-5 py-2 mono transition-all",
-                                    "border border-border bg-background text-muted-foreground",
-                                    "hover:border-border hover:text-foreground",
+                                    "cursor-target cursor-none relative px-5 py-2 mono transition-all",
+                                    "border bg-background text-muted-foreground",
+                                    "hover:text-foreground",
                                     isActive && [
                                         "text-foreground",
                                         "border-accent",
                                     ]
                                 )}
                             >
-                                {/* Active accent line */}
-                                {isActive && (
-                                    <span className="absolute left-0 top-0 h-full w-[2px] bg-accent" />
-                                )}
-
                                 {category}
                             </button>
                         )
