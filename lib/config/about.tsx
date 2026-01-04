@@ -46,29 +46,29 @@ export const DOMAINS = [
 
 export const ABOUT_EVENTS = [
   {
-    name: "Impulse '25",
-    description: "Flagship technical fest with 1000+ participants.",
+    name: "Event 1",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     time: "Upcoming",
     icon: "🚀",
     color: "#00C9A7",
   },
   {
-    name: "Web Dev SIG",
-    description: "Special Interest Group for Full Stack Development.",
+    name: "Event 2",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     time: "Ongoing",
     icon: "💻",
     color: "#FFB800",
   },
   {
-    name: "HackMAIT 4.0",
-    description: "24-hour hackathon solving real-world problems.",
+    name: "Event 3",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     time: "2m ago",
     icon: "🏆",
     color: "#FF3D71",
   },
   {
-    name: "Tech Talk",
-    description: "Session on System Design by Alumni.",
+    name: "Event 4",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     time: "5m ago",
     icon: "🎤",
     color: "#1E86FF",

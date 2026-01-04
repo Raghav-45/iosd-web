@@ -6,6 +6,7 @@ import {
   IconCalendar,
   IconHome,
   IconInfoCircle,
+  IconPhoto,
   IconSchool,
   IconUsers,
 } from '@tabler/icons-react'
@@ -44,6 +45,13 @@ export const NAV_LINKS = [
     href: '/about',
     icon: (
       <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+  },
+  {
+    title: 'Gallery',
+    href: '/gallery',
+    icon: (
+      <IconPhoto className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
   },
 ]
