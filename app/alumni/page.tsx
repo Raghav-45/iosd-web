@@ -4,8 +4,8 @@ import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
 import { AvatarCircles } from "@/components/ui/avatar-circles"
 import { DotPattern } from "@/components/ui/dot-pattern"
 import { JoinUsButton } from "@/components/join-us-button"
-import { AlumniIndex } from "@/components/AlumniIndex"
-import { AlumniOutcomes } from "@/components/AlumniOutcomes"
+import { AlumniIndex } from "@/components/alumni/AlumniIndex"
+import { AlumniOutcomes } from "@/components/alumni/AlumniOutcomes"
 import { NOTABLE_ALUMNI, ALUMNI_OUTCOMES } from "@/lib/config"
 import {
   Briefcase,

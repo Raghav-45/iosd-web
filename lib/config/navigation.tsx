@@ -59,22 +59,22 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = [
   {
     title: 'Twitter',
-    href: 'https://twitter.com',
+    href: 'https://x.com/iosdorg',
     icon: <IconBrandTwitter className="h-5 w-5" />,
   },
   {
     title: 'GitHub',
-    href: 'https://github.com',
+    href: 'https://github.com/iosdmait',
     icon: <IconBrandGithub className="h-5 w-5" />,
   },
   {
     title: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/company/iosdmait/',
     icon: <IconBrandLinkedin className="h-5 w-5" />,
   },
   {
     title: 'Instagram',
-    href: 'https://instagram.com',
+    href: 'https://instagram.com/iosdmait',
     icon: <IconBrandInstagram className="h-5 w-5" />,
   },
 ]

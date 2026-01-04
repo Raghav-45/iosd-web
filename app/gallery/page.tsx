@@ -18,11 +18,11 @@ export default function GalleryPage() {
     return (
         <div className="min-h-screen bg-background">
             {/* Header */}
-            <div className="container mx-auto px-4 py-16">
-                <h1 className="text-5xl font-bold tracking-tighter text-center mb-4">
+            <div className="container mx-auto px-4 py-24">
+                <h1 className="text-5xl sm:text-7xl font-light tracking-tight text-center mb-4">
                     Gallery
                 </h1>
-                <p className="text-center text-muted-foreground mb-8">
+                <p className="text-center text-muted-foreground text-lg mb-8">
                     Moments captured from our events, workshops, and activities
                 </p>
 
@@ -36,18 +36,18 @@ export default function GalleryPage() {
                                 key={category}
                                 onClick={() => setFilter(category)}
                                 className={cn(
-                                    "relative px-5 py-2 text-xs font-semibold uppercase tracking-widest transition-all",
-                                    "border border-white/10 bg-background text-muted-foreground",
-                                    "hover:border-white/20 hover:text-foreground",
+                                    "relative px-5 py-2 mono transition-all",
+                                    "border border-border bg-background text-muted-foreground",
+                                    "hover:border-border hover:text-foreground",
                                     isActive && [
                                         "text-foreground",
-                                        "border-primary",
+                                        "border-accent",
                                     ]
                                 )}
                             >
                                 {/* Active accent line */}
                                 {isActive && (
-                                    <span className="absolute left-0 top-0 h-full w-[2px] bg-primary" />
+                                    <span className="absolute left-0 top-0 h-full w-[2px] bg-accent" />
                                 )}
 
                                 {category}
@@ -72,10 +72,10 @@ export default function GalleryPage() {
                                     className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                                     style={{ height: `${image.height}px` }}
                                 />
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                     <div>
-                                        <p className="text-white font-medium text-sm">{image.description}</p>
-                                        <p className="text-white/70 text-xs mt-1">{image.category}</p>
+                                        <p className="text-foreground font-medium text-sm">{image.description}</p>
+                                        <p className="text-muted-foreground text-xs mt-1">{image.category}</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,14 +87,14 @@ export default function GalleryPage() {
             {/* Image Modal */}
             {selectedImage && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+                    className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4"
                     onClick={() => setSelectedImage(null)}
                 >
                     <button
                         onClick={() => setSelectedImage(null)}
-                        className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                        className="absolute top-4 right-4 p-2 border border-border bg-background hover:bg-accent-glow transition-colors"
                     >
-                        <X className="h-6 w-6 text-white" />
+                        <X className="h-6 w-6" />
                     </button>
 
                     <div
@@ -104,13 +104,13 @@ export default function GalleryPage() {
                         <img
                             src={selectedImage.src}
                             alt={selectedImage.alt}
-                            className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                            className="w-full h-auto max-h-[80vh] object-contain"
                         />
                         <div className="mt-4 text-center">
-                            <h2 className="text-2xl font-bold text-white mb-2">
+                            <h2 className="text-2xl font-light tracking-tight mb-2">
                                 {selectedImage.description}
                             </h2>
-                            <p className="text-white/70">{selectedImage.category}</p>
+                            <p className="text-muted-foreground">{selectedImage.category}</p>
                         </div>
                     </div>
                 </div>
