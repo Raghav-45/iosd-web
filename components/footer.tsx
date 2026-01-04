@@ -86,9 +86,14 @@ export function Footer() {
           </p>
           
           <div className="flex gap-4">
-            <span className="mono rounded-sm border-none px-3 py-1 text-[var(--text-faint)]">
+            <Link 
+              href="https://mait.ac.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono rounded-sm border-none px-3 py-1 text-[var(--text-faint)] hover:underline transition-all duration-300"
+            >
               Maharaja Agrasen Institute of Technology
-            </span>
+            </Link>
             <span className="mono rounded-sm border border-[var(--border-subtle)] px-3 py-1 text-[var(--text-faint)]">
               Est. 2016
             </span>
