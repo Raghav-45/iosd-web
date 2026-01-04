@@ -54,10 +54,14 @@ export function ShaderPlane({
   position,
   color1 = "#ff5722",
   color2 = "#ffffff",
+  width = 2,
+  height = 2,
 }: {
   position: [number, number, number]
   color1?: string
   color2?: string
+  width?: number
+  height?: number
 }) {
   const mesh = useRef<THREE.Mesh>(null)
 
@@ -80,7 +84,7 @@ export function ShaderPlane({
 
   return (
     <mesh ref={mesh} position={position}>
-      <planeGeometry args={[2, 2, 32, 32]} />
+      <planeGeometry args={[width, height, 32, 32]} />
       <shaderMaterial
         uniforms={uniforms}
         vertexShader={vertexShader}
