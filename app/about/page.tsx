@@ -6,12 +6,13 @@ import { AnimatedList } from "@/components/ui/animated-list";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import { JoinUsButton } from "@/components/join-us-button";
-import { ABOUT_EVENTS, DOMAINS } from "@/lib/config";
 import {
-  Calendar,
-  Users,
-  Trophy,
-} from "lucide-react";
+  ABOUT_EVENTS,
+  DOMAINS,
+  ABOUT_STATS,
+  ABOUT_CONTENT,
+  GALLERY_PREVIEW,
+} from "@/lib/config";
 
 interface NotificationProps {
   name: string;
@@ -65,10 +66,10 @@ export default function AboutPage() {
       <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden rounded-md">
         <div className="z-10 flex flex-col items-center gap-4 text-center px-4">
           <h1 className="text-5xl font-bold tracking-tighter sm:text-7xl bg-clip-text text-transparent bg-linear-to-b from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-500">
-            About Us
+            {ABOUT_CONTENT.hero.title}
           </h1>
           <p className="max-w-[600px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-neutral-400">
-            IOSD at MAIT
+            {ABOUT_CONTENT.hero.subtitle}
           </p>
           {/* <p className="max-w-[800px] text-lg font-medium text-primary">
             &quot;We are a bunch of students pledged to enrich the development culture.&quot;
@@ -87,60 +88,32 @@ export default function AboutPage() {
           baseVelocity={3}
           className="font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-20"
         >
-          Development • Student Lead • Mentorship • Innovation •&nbsp;
+          {ABOUT_CONTENT.velocity.text}
         </ScrollVelocityRow>
       </section>
 
       {/* Stats Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
-          {/* Card 1 */}
-          <div className="group relative border border-white/10 bg-background p-6 transition-all hover:-translate-y-1 hover:border-white/20">
-            <div className="absolute left-0 top-0 h-full w-[2px] bg-primary/70" />
+          {ABOUT_STATS.map((stat, index) => (
+            <div
+              key={index}
+              className="group relative border border-white/10 bg-background p-6 transition-all hover:-translate-y-1 hover:border-white/20"
+            >
+              <div className="absolute left-0 top-0 h-full w-[2px] bg-primary/70" />
 
-            <Users className="h-6 w-6 text-primary mb-6" />
+              <stat.Icon className="h-6 w-6 text-primary mb-6" />
 
-            <h3 className="text-5xl font-extrabold tracking-tight tabular-nums">
-              <NumberTicker value={300} />
-              <span className="text-3xl align-super">+</span>
-            </h3>
+              <h3 className="text-5xl font-extrabold tracking-tight tabular-nums">
+                <NumberTicker value={stat.value} />
+                <span className="text-3xl align-super">+</span>
+              </h3>
 
-            <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
-              Active Members
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="group relative border border-white/10 bg-background p-6 transition-all hover:-translate-y-1 hover:border-white/20">
-            <div className="absolute left-0 top-0 h-full w-[2px] bg-primary/70" />
-
-            <Calendar className="h-6 w-6 text-primary mb-6" />
-
-            <h3 className="text-5xl font-extrabold tracking-tight tabular-nums">
-              <NumberTicker value={1000} />
-              <span className="text-3xl align-super">+</span>
-            </h3>
-
-            <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
-              Event Footfall
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="group relative border border-white/10 bg-background p-6 transition-all hover:-translate-y-1 hover:border-white/20">
-            <div className="absolute left-0 top-0 h-full w-[2px] bg-primary/70" />
-
-            <Trophy className="h-6 w-6 text-primary mb-6" />
-
-            <h3 className="text-5xl font-extrabold tracking-tight tabular-nums">
-              <NumberTicker value={500} />
-              <span className="text-3xl align-super">+</span>
-            </h3>
-
-            <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
-              Students Mentored
-            </p>
-          </div>
+              <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -157,62 +130,25 @@ export default function AboutPage() {
           </a>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* Large image - spans 2 rows and 2 columns */}
-          <div className="col-span-2 row-span-2 relative overflow-hidden rounded-lg bg-muted group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 group-hover:from-primary/30 group-hover:to-primary/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-6xl">🎯</span>
+          {GALLERY_PREVIEW.map((item, index) => (
+            <div
+              key={index}
+              className={`relative overflow-hidden rounded-lg bg-muted group cursor-pointer ${item.gridClass}`}
+            >
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${item.gradient} group-hover:${item.hoverGradient} transition-all duration-300 flex items-center justify-center`}
+              >
+                <span className={item.gridClass.includes("col-span-2") ? "text-6xl" : item.gridClass.includes("aspect-[2/1]") ? "text-5xl" : "text-4xl"}>
+                  {item.emoji}
+                </span>
+              </div>
+              {item.label && (
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                  <p className="text-white font-medium">{item.label}</p>
+                </div>
+              )}
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-              <p className="text-white font-medium">Event Highlight 1</p>
-            </div>
-          </div>
-
-          {/* Small images */}
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-500/5 group-hover:from-blue-500/30 group-hover:to-blue-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">💻</span>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-green-500/5 group-hover:from-green-500/30 group-hover:to-green-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">🚀</span>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-purple-500/5 group-hover:from-purple-500/30 group-hover:to-purple-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">🎨</span>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-500/5 group-hover:from-orange-500/30 group-hover:to-orange-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">🏆</span>
-            </div>
-          </div>
-
-          {/* Wide image - spans 2 columns */}
-          <div className="col-span-2 relative overflow-hidden rounded-lg bg-muted aspect-[2/1] group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-pink-500/5 group-hover:from-pink-500/30 group-hover:to-pink-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-5xl">🎭</span>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-              <p className="text-white font-medium">Event Highlight 2</p>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 group-hover:from-yellow-500/30 group-hover:to-yellow-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">🎤</span>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-lg bg-muted aspect-square group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-500/5 group-hover:from-red-500/30 group-hover:to-red-500/10 transition-all duration-300 flex items-center justify-center">
-              <span className="text-4xl">📱</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -257,17 +193,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Ready to start your journey?
-          </h2>
-          <p className="mb-8 text-muted-foreground">
-            Join IOSD MAIT and be part of the development revolution.
-          </p>
-          <JoinUsButton />
-        </div>
+      <section className="py-20 bg-muted/30">{ABOUT_CONTENT.mission.title}
+        <p className="text-lg text-muted-foreground">
+          {ABOUT_CONTENT.mission.description}
+          {ABOUT_CONTENT.cta.title}
+        </p>
+        <p className="mb-8 text-muted-foreground">
+          {ABOUT_CONTENT.cta.description}
+        </p>
+        <JoinUsButton />
       </section>
     </div>
-  );
+  )
 }
