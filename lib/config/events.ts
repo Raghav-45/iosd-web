@@ -66,5 +66,5 @@ export const UPCOMING_EVENT: UpcomingEvent | null = {
     "The flagship tech fest of IOSD MAIT",
   coverImage: "/gallery/impulse-25/cover.jpg",
   registerUrl: "https://arpantaneja.dev",
-  registrationOpen: true,
+  registrationOpen: false,
 }

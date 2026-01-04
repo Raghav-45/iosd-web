@@ -65,9 +65,21 @@ export function UpcomingEventCard({ event }: UpcomingEventProps) {
                 )}
 
                 {!event.registrationOpen && (
-                  <span className="mono text-xs text-muted-foreground">
+                <span className="relative mono text-sm text-muted-foreground">
+                <span className="relative z-10">
                     Registration opening soon
-                  </span>
+                </span>
+
+                <span
+                    className="absolute inset-0 -z-10 rounded-sm blur-xl"
+                    style={{
+                    background:
+                        "radial-gradient(circle at center, var(--accent), transparent 70%)",
+                    animation: "pulseGlow 2.5s ease-in-out infinite",
+                    }}
+                />
+                </span>
+
                 )}
               </div>
             </div>

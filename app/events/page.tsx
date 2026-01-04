@@ -107,6 +107,11 @@ export default function EventsPage() {
 
       <GalleryBridge />
 
+      <p className="mono text-xs text-muted-foreground text-center py-16">
+        Events are excuses. Learning is the agenda.
+      </p>
+
+
     </div>
   )
 }
