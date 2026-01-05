@@ -89,31 +89,6 @@ export default function AboutPage() {
         </ScrollVelocityRow>
       </section>
 
-      {/* Stats Section */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
-          {ABOUT_STATS.map((stat, index) => (
-            <div
-              key={index}
-              className="group relative border border-border bg-background p-6 transition-all hover:-translate-y-1 hover:border-border"
-            >
-              <div className="absolute left-0 top-0 h-full w-[2px] bg-accent" />
-
-              <stat.Icon className="h-6 w-6 text-foreground mb-6" />
-
-              <h3 className="text-5xl font-light tracking-tight tabular-nums">
-                <NumberTicker value={stat.value} />
-                <span className="text-3xl align-super">+</span>
-              </h3>
-
-              <p className="mt-3 mono text-muted-foreground">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Mission & Vision Split */}
       <section className="container mx-auto px-4 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -135,23 +110,6 @@ export default function AboutPage() {
             </AnimatedList>
           </div>
         </div>
-      </section>
-
-      {/* Domains Bento Grid */}
-      <section className="container mx-auto px-4 py-24">
-        <h2 className="mb-12 text-3xl font-light tracking-tight text-center">
-          Technical Domains
-        </h2>
-        <BentoGrid className="lg:grid-rows-2">
-          {DOMAINS.map((feature) => (
-            <BentoCard key={feature.name} {...feature} />
-          ))}
-        </BentoGrid>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="w-full">
-        <Testimonial />
       </section>
 
       {/* CTA Section */}

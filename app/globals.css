@@ -38,7 +38,7 @@
   /* Focus */
   --ring: oklch(1 0 0 / 0.3);
 
-  /* ✅ Fonts -FIXED */
+  /* Fonts */
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
