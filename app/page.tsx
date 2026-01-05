@@ -20,6 +20,7 @@ import {
 } from "@/lib/config";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Testimonial } from "@/components/ui/design-testimonial";
+import { JoinUsButton } from "@/components/join-us-button";
 
 
 export default function Home() {
@@ -101,7 +102,8 @@ export default function Home() {
         <div className="flex items-center justify-center mb-12">
           <a
             href="/gallery"
-            className="text-3xl font-light tracking-tight text-center hover:text-accent transition-colors"
+            className="text-3xl font-light tracking-tight text-center transition-colors cursor-target"
+            style={{ cursor: 'none' }}
           >
             Gallery
           </a>
@@ -130,15 +132,13 @@ export default function Home() {
 
       {/* Footer CTA */}
       <section className="relative py-24 flex flex-col items-center justify-center text-center px-4 border-t border-border/40 bg-background/50 backdrop-blur-sm">
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter">
+        <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">
           Ready to <span className="text-accent">Build?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl mb-8 text-lg">
           Join the most vibrant technical community at MAIT. Whether you're a beginner or a pro, there's a place for you here.
         </p>
-        <Link href="https://chat.whatsapp.com/your-group-link" target="_blank">
-          <RainbowButton>Join WhatsApp Community</RainbowButton>
-        </Link>
+        <JoinUsButton/>
       </section>
     </div>
   );

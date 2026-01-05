@@ -20,19 +20,20 @@ export const NAV_LINKS = [
     ),
   },
   {
+    title: 'Gallery',
+    href: '/gallery',
+    icon: (
+      <IconPhoto className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    ),
+  },
+  {
     title: 'Events',
     href: '/events',
     icon: (
       <IconCalendar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
   },
-  {
-    title: 'Team',
-    href: '/team',
-    icon: (
-      <IconUsers className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-  },
+
   {
     title: 'Alumni',
     href: '/alumni',
@@ -45,13 +46,6 @@ export const NAV_LINKS = [
     href: '/about',
     icon: (
       <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-    ),
-  },
-  {
-    title: 'Gallery',
-    href: '/gallery',
-    icon: (
-      <IconPhoto className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
   },
 ]

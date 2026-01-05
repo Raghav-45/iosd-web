@@ -1,18 +1,19 @@
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { NumberTicker } from "@/components/ui/number-ticker";
+import { MagicCard } from "@/components/ui/magic-card"
 import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import { AnimatedList } from "@/components/ui/animated-list";
-import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { Testimonial } from "@/components/ui/design-testimonial";
+import { Github, Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
 import { JoinUsButton } from "@/components/join-us-button";
 import {
   ABOUT_EVENTS,
-  DOMAINS,
+  TEAM_MEMBERS,
   ABOUT_STATS,
   ABOUT_CONTENT,
   GALLERY_PREVIEW,
 } from "@/lib/config";
+import { WordRotate } from "@/components/ui/word-rotate";
 
 interface NotificationProps {
   name: string;
@@ -60,7 +61,7 @@ export default function AboutPage() {
     <div className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Hero Section */}
       <section className="relative flex h-[60vh] items-center justify-center">
-        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
+        <div className="flex flex-col items-center gap-6 text-center px-4">
           <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
             {ABOUT_CONTENT.hero.title}
           </h1>
@@ -90,7 +91,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Split */}
-      <section className="container mx-auto px-4 py-24">
+      <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-light tracking-tight">{ABOUT_CONTENT.mission.title}</h2>
@@ -111,6 +112,72 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section className="container mx-auto px-4 pt-24 pb-16">
+        <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden">
+          <div className="flex flex-col items-center gap-6 text-center px-5">
+            <h1 className="text-5xl sm:text-7xl font-light tracking-tight leading-none">
+              Meet the{" "}
+              <WordRotate
+                className="inline-block font-light text-foreground"
+                words={["Builders", "Engineers", "Thinkers"]}
+              />
+            </h1>
+            <p className="max-w-xl text-muted-foreground text-lg">
+              The people shaping IOSD - quietly, deliberately, together.
+            </p>
+          </div>
+        </section>
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          {TEAM_MEMBERS.map((member, index) => (
+            <MagicCard
+              key={index}
+              className="p-8"
+            >
+              <div className="flex flex-col items-center text-center">
+                {/* Avatar */}
+                <div className="relative mb-6 h-28 w-28 overflow-hidden border border-border">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                  />
+                </div>
+
+                {/* Name */}
+                <h3 className="text-xl font-medium">
+                  {member.name}
+                </h3>
+
+                {/* Role */}
+                <p className="mt-1 text-sm text-muted-foreground mono">
+                  {member.role}
+                </p>
+
+                {/* Socials */}
+                <div className="mt-6 flex gap-5">
+                  {member.socials.github && (
+                    <a href={member.socials.github} className="text-muted-foreground hover:text-foreground transition">
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
+                  {member.socials.linkedin && (
+                    <a href={member.socials.linkedin} className="text-muted-foreground hover:text-foreground transition">
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
+                  {member.socials.twitter && (
+                    <a href={member.socials.twitter} className="text-muted-foreground hover:text-foreground transition">
+                      <Twitter className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </MagicCard>
+          ))}
+        </div>
+      </section>
+
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-24">
