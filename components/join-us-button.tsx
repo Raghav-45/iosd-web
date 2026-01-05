@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './join-us-button.module.css';
+import { cn } from '@/lib/utils';
 
 type JoinUsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const JoinUsButton: React.FC<JoinUsButtonProps> = (props) => {
   return (
-    <button className={styles.button} {...props}>
+    <button className={cn(styles.button, 'cursor-target')} {...props}>
       <svg
         height="24"
         width="24"
