@@ -150,7 +150,7 @@ function MagneticSocialIcon({
       rel="noopener noreferrer"
       onMouseEnter={() => setHoveredSocial(social.title)}
       onMouseLeave={() => setHoveredSocial(null)}
-      className="cursor-target cursor-none group relative"
+      className="cursor-target cursor-none group relative p-0.5"
       aria-label={social.title}
     >
       <motion.div
@@ -201,7 +201,7 @@ function MagneticNavLink({
     <Link
       ref={ref}
       href={link.href}
-      className="cursor-target cursor-none group relative inline-block text-lg font-light text-[var(--text-muted)] transition-colors duration-300 hover:text-foreground"
+      className="cursor-target cursor-none group relative inline-block text-lg font-light text-[var(--text-muted)] transition-colors duration-300 hover:text-foreground p-0.5"
     >
       <motion.span style={{ scale: scaleSpring }} className="relative inline-block">
         {link.title}
