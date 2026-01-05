@@ -1,103 +1,71 @@
-import Image from "next/image";
+"use client";
+
+import { Globe } from "@/components/ui/globe";
+import { RetroGrid } from "@/components/ui/retro-grid";
+import { RainbowButton } from "@/components/ui/rainbow-button";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
+import { Marquee } from "@/components/ui/marquee";
+import { AvatarCircles } from "@/components/ui/avatar-circles";
+import { WordRotate } from "@/components/ui/word-rotate";
+import { Calendar, GraduationCap, Users, Image as ImageIcon, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { EVENTS, NOTABLE_ALUMNI, TEAM_MEMBERS, GALLERY_IMAGES } from "@/lib/config";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="relative min-h-screen w-full overflow-hidden bg-background font-sans selection:bg-accent selection:text-background">
+      <ScrollProgress className="top-0" />
+      
+      {/* Hero Section */}
+      <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden pb-20 pt-10 md:pb-32">
+        <RetroGrid />
+        
+        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
+          <div className="inline-flex items-center rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-sm font-medium text-accent backdrop-blur-xl">
+            <span className="flex h-2 w-2 rounded-full bg-accent mr-2 animate-pulse"></span>
+            MAIT's Premier Tech Society
+          </div>
+          
+          <h1 className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-tighter text-foreground">
+            IOSD
+            <span className="text-accent">.</span>
+          </h1>
+          
+          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl">
+            International Organization of <br className="hidden sm:block" />
+            <WordRotate 
+              className="font-medium text-foreground inline-block"
+              words={["Software Developers", "Innovators", "Builders", "Dreamers"]}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <Link href="/about">
+              <RainbowButton>
+                Join the Community <ArrowRight className="ml-2 h-4 w-4" />
+              </RainbowButton>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="absolute bottom-0 left-0 right-0 h-[500px] w-full translate-y-[20%] opacity-40 md:opacity-60 pointer-events-none">
+           <Globe className="top-20" />
+        </div>
+      </section>
+
+      {/* Footer CTA */}
+      <section className="relative py-24 flex flex-col items-center justify-center text-center px-4 border-t border-border/40 bg-background/50 backdrop-blur-sm">
+         <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter">
+            Ready to <span className="text-accent">Build?</span>
+         </h2>
+         <p className="text-muted-foreground max-w-xl mb-8 text-lg">
+            Join the most vibrant technical community at MAIT. Whether you're a beginner or a pro, there's a place for you here.
+         </p>
+         <Link href="https://chat.whatsapp.com/your-group-link" target="_blank">
+            <RainbowButton>Join WhatsApp Community</RainbowButton>
+         </Link>
+      </section>
     </div>
   );
 }
