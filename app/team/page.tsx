@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils"
 import { WordRotate } from "@/components/ui/word-rotate"
 import { DotPattern } from "@/components/ui/dot-pattern"
-import { MagicCard } from "@/components/ui/magic-card"
 import { JoinUsButton } from "@/components/join-us-button"
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
@@ -11,9 +10,9 @@ export default function TeamPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Hero */}
-      <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden">
-        <div className="z-10 flex flex-col items-center gap-6 text-center px-5">
-          <h1 className="text-5xl sm:text-7xl font-light tracking-tight leading-none">
+      <section className="relative flex h-[60vh] items-center justify-center">
+        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
+          <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
             Meet the{" "}
             <WordRotate
               className="inline-block font-light text-foreground"
@@ -28,60 +27,59 @@ export default function TeamPage() {
 
         <DotPattern
           className={cn(
-            "opacity-[0.15]",
+            "opacity-40",
             "mask-[radial-gradient(600px_circle_at_center,white,transparent)]"
           )}
         />
       </section>
 
       {/* Team Grid */}
-      <section className="container mx-auto px-4 pt-24 pb-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="container mx-auto px-4 py-24">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member, index) => (
-            <MagicCard
+            <div
               key={index}
-              className="p-8"
+              className="group relative flex flex-col items-center text-center p-8 border border-border bg-background transition-all hover:border-foreground/20"
             >
-              <div className="flex flex-col items-center text-center">
-                {/* Avatar */}
-                <div className="relative mb-6 h-28 w-28 overflow-hidden border border-border">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                  />
-                </div>
-
-                {/* Name */}
-                <h3 className="text-xl font-medium">
-                  {member.name}
-                </h3>
-
-                {/* Role */}
-                <p className="mt-1 text-sm text-muted-foreground mono">
-                  {member.role}
-                </p>
-
-                {/* Socials */}
-                <div className="mt-6 flex gap-5">
-                  {member.socials.github && (
-                    <a href={member.socials.github} className="text-muted-foreground hover:text-foreground transition">
-                      <Github className="h-4 w-4" />
-                    </a>
-                  )}
-                  {member.socials.linkedin && (
-                    <a href={member.socials.linkedin} className="text-muted-foreground hover:text-foreground transition">
-                      <Linkedin className="h-4 w-4" />
-                    </a>
-                  )}
-                  {member.socials.twitter && (
-                    <a href={member.socials.twitter} className="text-muted-foreground hover:text-foreground transition">
-                      <Twitter className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
+              {/* Avatar */}
+              <div className="relative mb-6 h-32 w-32 overflow-hidden rounded-full border border-border grayscale transition-all duration-300 group-hover:grayscale-0">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </MagicCard>
+
+              {/* Name */}
+              <h3 className="text-xl font-light tracking-tight">
+                {member.name}
+              </h3>
+
+              {/* Role */}
+              <p className="mt-2 text-sm text-muted-foreground mono">
+                {member.role}
+              </p>
+
+              {/* Socials */}
+              <div className="mt-6 flex gap-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {member.socials.github && (
+                  <a href={member.socials.github} className="text-muted-foreground hover:text-foreground transition">
+                    <Github className="h-4 w-4" />
+                  </a>
+                )}
+                {member.socials.linkedin && (
+                  <a href={member.socials.linkedin} className="text-muted-foreground hover:text-foreground transition">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                )}
+                {member.socials.twitter && (
+                  <a href={member.socials.twitter} className="text-muted-foreground hover:text-foreground transition">
+                    <Twitter className="h-4 w-4" />
+                  </a>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </section>
