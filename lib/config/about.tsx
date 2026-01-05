@@ -99,7 +99,7 @@ export const ABOUT_STATS = [
 export const ABOUT_CONTENT = {
   hero: {
     title: "About Us",
-    subtitle: "IOSD at MAIT",
+    subtitle: "International Organization of Student Developers at MAIT",
   },
   velocity: {
     text: "Development • Student Lead • Mentorship • Innovation •\u00A0",
