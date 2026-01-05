@@ -114,40 +114,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-
-
-      {/* Gallery Section */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="flex items-center justify-center mb-12">
-          <a
-            href="/gallery"
-            className="text-3xl font-light tracking-tight text-center hover:text-accent transition-colors"
-          >
-            Gallery
-          </a>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {GALLERY_PREVIEW.map((item, index) => (
-            <div
-              key={index}
-              className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
-            >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              {item.label && (
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-white font-medium">{item.label}</p>
-                </div>
-              )}
-              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Mission & Vision Split */}
       <section className="container mx-auto px-4 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
