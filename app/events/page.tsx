@@ -19,9 +19,14 @@ const recent = EVENTS.filter(e => !e.featured)
 export default function EventsPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
-  const handleEventClick = () => {
+  const handleEventClick = (src:string) => {
     if (GALLERY_IMAGES.length > 0) {
-      setSelectedImage(GALLERY_IMAGES[0])
+      const image = GALLERY_IMAGES.find((event)=>event.src===src)
+      if(!image) {
+        setSelectedImage(null)
+        return
+      }
+      setSelectedImage(image)
     }
   }
 
@@ -66,7 +71,7 @@ export default function EventsPage() {
               key={event.id}
               event={event}
               priority
-              onClick={handleEventClick}
+              onClick={()=>handleEventClick(event.coverImage)}
             />
           ))}
         </div>
@@ -83,7 +88,7 @@ export default function EventsPage() {
             <EventPreviewCard
               key={event.id}
               event={event}
-              onClick={handleEventClick}
+              onClick={()=>handleEventClick(event.coverImage)}
             />
           ))}
         </div>

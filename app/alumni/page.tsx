@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
@@ -13,6 +14,11 @@ import {
   Trophy,
   Rocket,
 } from "lucide-react"
+import Meta from "@/public/logos/meta-3.svg"
+import Uber from "@/public/logos/uber-15.svg"
+import Apple from "@/public/logos/Apple_logo_white.svg"
+import ZS from "@/public/logos/zs.png"
+import PayPal from "@/public/logos/paypal.png"
 
 const features = [
   {
@@ -52,17 +58,56 @@ const features = [
 ]
 
 const companies = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Meta",
-  "Apple",
-  "Netflix",
-  "Uber",
-  "Airbnb",
-  "Twitter",
-  "LinkedIn",
-]
+  {
+    name: "Google",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+  },
+  {
+    name: "Microsoft",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+  },
+  {
+    name: "Amazon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  },
+  {
+    name: "Meta",
+    logo: Meta,
+  },
+  {
+    name: "Apple",
+    logo: Apple
+  },
+  {
+    name: "Netflix",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+  },
+  {
+    name: "Uber",
+    logo: Uber,
+  },
+  {
+    name: "Airbnb",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_Bélo.svg",
+  },
+  {
+    name: "Twitter",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg",
+  },
+  {
+    name: "LinkedIn",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+  },
+  {
+    name: "PayPal",
+    logo: PayPal,
+  },
+  {
+    name: "ZS",
+    logo: ZS,
+  },
+];
+
 
 const avatarUrls = [
   { imageUrl: "https://avatars.githubusercontent.com/u/16860528", profileUrl: "#" },
@@ -169,14 +214,15 @@ export default function AlumniPage() {
           <Marquee className="[--duration:24s]">
             {companies.map((company) => (
               <div
-                key={company}
+                key={company.name}
                 className={cn(
                   "mx-6 flex h-16 w-40 items-center justify-center",
                   "border border-border text-sm mono",
                   "text-muted-foreground hover:text-foreground transition"
                 )}
               >
-                {company}
+                <Image src={company.logo} alt={company.name} width={34} height={34} className="max-w-fit max-h-6 mr-3"/>
+                {company.name}
               </div>
             ))}
           </Marquee>
