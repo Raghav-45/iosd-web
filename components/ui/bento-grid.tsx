@@ -1,8 +1,81 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+"use client"
 
+import type React from "react"
+
+import type { ComponentPropsWithoutRef, ReactNode } from "react"
+import { useState } from "react"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { FaCode, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaDatabase, FaChartBar, FaChartPie } from "react-icons/fa"
+import { MdWeb, MdOutlineDevices, MdPsychology, MdTimeline, MdModelTraining, MdAnalytics } from "react-icons/md"
+import { FiLayout } from "react-icons/fi"
+import { TbWorldWww, TbManualGearbox, TbBinaryTree, TbSql } from "react-icons/tb"
+import { SiJavascript, SiTypescript, SiTensorflow, SiPytorch, SiPandas, SiScipy } from "react-icons/si"
+import { VscBrowser, VscChecklist, VscGraph } from "react-icons/vsc"
+
+// 2. ML Imports
+import { GiBrain, GiSandsOfTime } from "react-icons/gi"
+import { RiRobotLine } from "react-icons/ri"
+import { AiOutlineDotChart, AiOutlineAreaChart } from "react-icons/ai"
+import { BiChip, BiTable } from "react-icons/bi"
+import { LuBrainCircuit } from "react-icons/lu"
+
+// 3. DSA Imports
+import { PiTreeStructureFill } from "react-icons/pi"
+import { TiFlowMerge } from "react-icons/ti"
+import { BsGraphUp } from "react-icons/bs"
+import { CgLoadbar } from "react-icons/cg"
+import { ImTree } from "react-icons/im"
+
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  // Web
+  FaCode,
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaNodeJs,
+  MdWeb,
+  MdOutlineDevices,
+  FiLayout,
+  TbWorldWww,
+  SiJavascript,
+  SiTypescript,
+  VscBrowser,
+
+  // ML
+  GiBrain,
+  RiRobotLine,
+  MdPsychology,
+  TbManualGearbox,
+  SiTensorflow,
+  SiPytorch,
+  AiOutlineDotChart,
+  BiChip,
+  LuBrainCircuit,
+  MdModelTraining,
+
+  // DSA
+  PiTreeStructureFill,
+  TiFlowMerge,
+  MdTimeline,
+  VscChecklist,
+  GiSandsOfTime,
+  BsGraphUp,
+  CgLoadbar,
+  ImTree,
+  TbBinaryTree,
+
+  // Data Science
+  FaDatabase,
+  FaChartBar,
+  FaChartPie,
+  MdAnalytics,
+  SiPandas,
+  SiScipy,
+  TbSql,
+  VscGraph,
+  AiOutlineAreaChart,
+  BiTable,
+}
 
 interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode
@@ -17,90 +90,89 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   description: string
   href: string
   cta: string
+  icons: string[]
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
-    <div
-      className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("grid w-full auto-rows-[22rem] grid-cols-3 gap-4", className)} {...props}>
       {children}
     </div>
   )
 }
 
-const BentoCard = ({
-  name,
-  className,
-  background,
-  Icon,
-  description,
-  href,
-  cta,
-  ...props
-}: BentoCardProps) => (
-  <div
-    key={name}
-    className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden",
-      "border border-border bg-background backdrop-blur-md",
-      className
-    )}
-    {...props}
-  >
-    <div>{background}</div>
-    <div className="p-4">
-      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300">
-        <Icon className="h-12 w-12 origin-left transform-gpu text-foreground transition-all duration-300 ease-in-out" />
-        <h3 className="text-xl font-light tracking-tight">
-          {name}
-        </h3>
-        <p className="max-w-lg text-muted-foreground">{description}</p>
-      </div>
+// Updated BentoCard component with improved icon styling
+const BentoCard = ({ name, className, background, Icon, description, href, cta, icons, ...props }: BentoCardProps) => {
+  const [hover, setHover] = useState<boolean>(false)
 
-      {/* <div
-        className={cn(
-          "pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:hidden"
-        )}
-      >
-        <Button
-          variant="link"
-          asChild
-          size="sm"
-          className="pointer-events-auto p-0"
-        >
-          <a href={href}>
-            {cta}
-            <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </a>
-        </Button>
-      </div> */}
-    </div>
-
-    {/* <div
+  return (
+    <div
+      key={name}
       className={cn(
-        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:flex"
+        "group relative col-span-3 flex flex-col justify-between overflow-hidden",
+        "border border-border bg-background backdrop-blur-md rounded-xl",
+        className,
       )}
+      {...props}
     >
-      <Button
-        variant="link"
-        asChild
-        size="sm"
-        className="pointer-events-auto p-0"
-      >
-        <a href={href}>
-          {cta}
-          <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-        </a>
-      </Button>
-    </div> */}
+      <div>{background}</div>
+      <div className="relative p-4 h-full" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+        <div
+          className={cn(
+            "pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-500 ease-in-out",
+            hover ? "opacity-0 scale-95" : "opacity-100 scale-100",
+          )}
+        >
+          <Icon className="h-12 w-12 origin-left transform-gpu text-foreground transition-all duration-300 ease-in-out" />
+          <h3 className="text-xl font-light tracking-tight">{name}</h3>
+          <p className="max-w-lg text-muted-foreground">{description}</p>
+        </div>
 
-    {/* <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-[var(--accent-glow)]" /> */}
-  </div>
-)
+        <div
+          className={cn(
+            "absolute inset-0 flex items-center justify-center transition-all duration-500 ease-in-out",
+            hover ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none",
+          )}
+        >
+          <div className="w-full h-full p-4">
+            <div className="grid grid-cols-3 lg:flex lg:gap-6 gap-4 h-full place-items-center lg:justify-center lg:items-center">
+              {icons?.slice(0, 9).map((iconName, index) => {
+                const Icon_React = ICON_MAP[iconName]
+                if (!Icon_React) return null
+
+                return (
+                  <div key={index} className="flex items-center justify-center w-full h-full lg:w-auto lg:h-auto">
+                    {/* Icon with hover effect */}
+                    <div className="group/icon relative flex items-center justify-center">
+                      {/* Glow background on hover */}
+                      <div
+                        className={cn(
+                          "absolute inset-0 blur-lg opacity-0 group-hover/icon:opacity-50 transition-opacity duration-300",
+                          "bg-accent rounded-lg",
+                        )}
+                        style={{
+                          width: "4rem",
+                          height: "4rem",
+                        }}
+                      />
+
+                      <Icon_React
+                        className={cn(
+                          "w-8 h-8 lg:w-12 lg:h-12 transition-all duration-300 ease-in-out",
+                          "group-hover/icon:scale-125 group-hover/icon:text-accent",
+                          "text-foreground relative z-10",
+                        )}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export { BentoCard, BentoGrid }

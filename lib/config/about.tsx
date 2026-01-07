@@ -17,6 +17,9 @@ export const DOMAINS = [
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-2",
+    icons:[ "FaHtml5", "FaCss3Alt", "FaReact", "FaNodeJs", "MdOutlineDevices", 
+      "SiJavascript", "SiTypescript", 
+    ]
   },
   {
     Icon: Brain,
@@ -26,6 +29,12 @@ export const DOMAINS = [
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-1",
+    icons:[
+       "RiRobotLine", "TbManualGearbox", 
+      "SiTensorflow", "SiPytorch", "AiOutlineDotChart", "BiChip", 
+      "LuBrainCircuit", "MdModelTraining"
+    ]
+
   },
   {
     Icon: Database,
@@ -35,6 +44,11 @@ export const DOMAINS = [
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-1",
+    icons:[
+      "PiTreeStructureFill", "TiFlowMerge", "MdTimeline", 
+      "GiSandsOfTime", "BsGraphUp", "CgLoadbar", "ImTree", 
+      "TbBinaryTree", "MdOutlineAlgorithm"
+    ]
   },
   {
     Icon: BarChart,
@@ -44,6 +58,11 @@ export const DOMAINS = [
     cta: "Learn More",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-2",
+    icons:[
+      "FaDatabase", "FaChartPie", "MdAnalytics", 
+      "SiPandas", "SiScipy", "TbSql", "VscGraph", 
+      "AiOutlineAreaChart", "BiTable"
+    ]
   },
 ];
 
