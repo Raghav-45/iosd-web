@@ -1,7 +1,7 @@
 export const TEAM_MEMBERS = [
   {
-    name: "Alex Morgan",
-    role: "Lead Developer",
+    name: "Devesh Tuteja",
+    role: "President",
     image: "https://avatars.githubusercontent.com/u/16860528",
     socials: {
       github: "#",

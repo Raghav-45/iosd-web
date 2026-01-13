@@ -1,6 +1,6 @@
 export const NOTABLE_ALUMNI = [
   {
-    name: "Alumni Member 1",
+    name: "Devesh Tuteja",
     batch: "2020-2024",
     role: "President",
     current: "Software Engineer @ Company 1",
