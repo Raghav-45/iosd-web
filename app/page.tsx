@@ -23,19 +23,16 @@ export default function Home() {
       <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden pb-20 pt-10 md:pb-32">
         <RetroGrid />
 
-        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
-
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 mb-4 scale-270">
-            <Image
-              src="/IOSD_HD.png"
-              alt="IOSD Logo"
-              fill
-              className="object-contain animate-fade-in"
-              priority
-            />
-          </div>
-
-          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl pb-50">
+        <div className="z-10 flex flex-col items-center gap-6 text-center px-4 w-full">
+          <Image
+            src="/IOSD_HD.png"
+            alt="IOSD Logo"
+            width={1079}
+            height={280}
+            className="h-auto w-auto max-w-[80vw] sm:max-w-lg md:max-w-xl object-contain animate-fade-in scale-140"
+            priority
+          />
+          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl">
             Maharaja Agrasen Institute of Technology
             <br className="hidden sm:block" />
           </div>
