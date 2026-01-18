@@ -1,6 +1,6 @@
 export const TEAM_MEMBERS = [
   {
-    name: "Devesh Tuteja",
+    name: "John Doe",
     role: "President",
     image: "https://avatars.githubusercontent.com/u/16860528",
     socials: {
@@ -10,9 +10,9 @@ export const TEAM_MEMBERS = [
     },
   },
   {
-    name: "Sarah Chen",
-    role: "UI/UX Designer",
-    image: "https://avatars.githubusercontent.com/u/20110627",
+    name: "Devesh Tuteja",
+    role: "President",
+    image: "/team/devesh.jpg",
     socials: {
       github: "#",
       linkedin: "#",
@@ -20,8 +20,8 @@ export const TEAM_MEMBERS = [
     },
   },
   {
-    name: "James Wilson",
-    role: "Backend Engineer",
+    name: "Aayush Roy",
+    role: "Advisor",
     image: "https://avatars.githubusercontent.com/u/106103625",
     socials: {
       github: "#",

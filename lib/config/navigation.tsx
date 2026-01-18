@@ -8,7 +8,6 @@ import {
   IconInfoCircle,
   IconPhoto,
   IconSchool,
-  IconUsers,
 } from '@tabler/icons-react'
 
 export const NAV_LINKS = [

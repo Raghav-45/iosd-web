@@ -9,4 +9,7 @@ export const SITE_CONFIG = {
     description:
       `International Organization of Software Developers at Maharaja Agrasen Institute of Technology. Empowering developers worldwide. MAIT's biggest technical society.`,
   },
+  cta: {
+    joinUs: "Join Us",
+  },
 }

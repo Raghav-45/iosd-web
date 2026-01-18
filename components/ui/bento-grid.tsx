@@ -88,8 +88,8 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   background: ReactNode
   Icon: React.ComponentType<{ className?: string }>
   description: string
-  href: string
-  cta: string
+  _href?: string
+  _cta?: string
   icons: string[]
 }
 
@@ -102,7 +102,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
 }
 
 // Updated BentoCard component with improved icon styling
-const BentoCard = ({ name, className, background, Icon, description, href, cta, icons, ...props }: BentoCardProps) => {
+const BentoCard = ({ name, className, background, Icon, description, icons, ...props }: BentoCardProps) => {
   const [hover, setHover] = useState<boolean>(false)
 
   return (

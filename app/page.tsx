@@ -2,25 +2,16 @@
 
 import { Globe } from "@/components/ui/globe";
 import { RetroGrid } from "@/components/ui/retro-grid";
-import { RainbowButton } from "@/components/ui/rainbow-button";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { Marquee } from "@/components/ui/marquee";
-import { AvatarCircles } from "@/components/ui/avatar-circles";
-import { WordRotate } from "@/components/ui/word-rotate";
-import { Calendar, GraduationCap, Users, Image as ImageIcon, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { EVENTS, NOTABLE_ALUMNI, TEAM_MEMBERS, GALLERY_IMAGES } from "@/lib/config";
 import {
-  ABOUT_EVENTS,
   DOMAINS,
   ABOUT_STATS,
-  ABOUT_CONTENT,
   GALLERY_PREVIEW,
 } from "@/lib/config";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import { JoinUsButton } from "@/components/join-us-button";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -32,16 +23,15 @@ export default function Home() {
       <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden pb-20 pt-10 md:pb-32">
         <RetroGrid />
 
-        <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
-
-
-          {/* LOGO tba here*/}
-
-          {/* <h1 className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-tighter text-foreground">
-            IOSD
-            <span className="text-accent">.</span>
-          </h1> */}
-
+        <div className="z-10 flex flex-col items-center gap-6 text-center px-4 w-full">
+          <Image
+            src="/IOSD_HD.png"
+            alt="IOSD Logo"
+            width={1079}
+            height={280}
+            className="h-auto w-auto max-w-[80vw] sm:max-w-lg md:max-w-xl object-contain animate-fade-in scale-140"
+            priority
+          />
           <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl">
             Maharaja Agrasen Institute of Technology
             <br className="hidden sm:block" />
@@ -114,10 +104,11 @@ export default function Home() {
               key={index}
               className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {item.label && (
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
@@ -136,7 +127,7 @@ export default function Home() {
           Ready to <span className="text-accent">Build?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl mb-8 text-lg">
-          Join the most vibrant technical community at MAIT. Whether you're a beginner or a pro, there's a place for you here.
+          Join the most vibrant technical community at MAIT. Whether you&apos;re a beginner or a pro, there&apos;s a place for you here.
         </p>
         <JoinUsButton/>
       </section>

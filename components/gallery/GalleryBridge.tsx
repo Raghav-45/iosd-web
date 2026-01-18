@@ -4,6 +4,7 @@ import { useState } from "react"
 import { GALLERY_IMAGES, type GalleryImage } from "@/lib/config"
 import { GalleryModal } from "@/components/gallery/GalleryModal"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export function GalleryBridge() {
   const images = GALLERY_IMAGES.slice(0, 10)
@@ -30,10 +31,13 @@ export function GalleryBridge() {
                 "border border-border bg-muted"
               )}
             >
-              <img
+              <Image
                 src={img.src}
                 alt={img.alt}
+                width={384}
+                height={256}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                unoptimized
               />
             </div>
           ))}

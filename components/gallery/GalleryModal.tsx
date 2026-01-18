@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useCallback } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
 import type { GalleryImage } from "@/lib/config"
+import Image from "next/image"
 
 interface GalleryModalProps {
   images: GalleryImage[]
@@ -18,6 +18,22 @@ export function GalleryModal({
   onClose,
   onSelect,
 }: GalleryModalProps) {
+  const currentIndex = images.findIndex(img => img?.id === selected?.id)
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex < images.length - 1
+
+  const navigatePrev = useCallback(() => {
+    if (hasPrev) {
+      onSelect(images[currentIndex - 1])
+    }
+  }, [hasPrev, currentIndex, images, onSelect])
+
+  const navigateNext = useCallback(() => {
+    if (hasNext) {
+      onSelect(images[currentIndex + 1])
+    }
+  }, [hasNext, currentIndex, images, onSelect])
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selected) return
@@ -33,25 +49,9 @@ export function GalleryModal({
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [selected, images])
+  }, [selected, navigatePrev, navigateNext, onClose])
 
   if (!selected) return null
-
-  const currentIndex = images.findIndex(img => img.id === selected.id)
-  const hasPrev = currentIndex > 0
-  const hasNext = currentIndex < images.length - 1
-
-  const navigatePrev = () => {
-    if (hasPrev) {
-      onSelect(images[currentIndex - 1])
-    }
-  }
-
-  const navigateNext = () => {
-    if (hasNext) {
-      onSelect(images[currentIndex + 1])
-    }
-  }
 
   return (
     <div
@@ -97,10 +97,13 @@ export function GalleryModal({
         className="max-w-5xl w-full"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
+        <Image
           src={selected.src}
           alt={selected.alt}
+          width={1200}
+          height={800}
           className="w-full h-auto max-h-[80vh] object-contain"
+          unoptimized
         />
 
         {selected.description && (
