@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils"
 import { UpcomingEvent } from "@/lib/config/events"
 import { Button } from "@/components/ui/button"
 import { useRef } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react"
+import Image from "next/image"
 
 interface UpcomingEventProps {
   event: UpcomingEvent
@@ -88,10 +89,11 @@ export function UpcomingEventCard({ event }: UpcomingEventProps) {
             {event.coverImage && (
               <div className="relative h-full min-h-[280px] md:min-h-[320px] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/80 z-10" />
-                <img
+                <Image
                   src={event.coverImage}
                   alt={event.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Subtle cyan glow on image */}
                 <div className="absolute inset-0 bg-accent/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -110,8 +112,8 @@ function MagneticButton({
   mouseY,
 }: {
   href: string
-  mouseX: any
-  mouseY: any
+  mouseX: MotionValue<number>
+  mouseY: MotionValue<number>
 }) {
   const ref = useRef<HTMLAnchorElement>(null)
 
@@ -123,7 +125,7 @@ function MagneticButton({
     return Math.sqrt(Math.pow(Number(x) - centerX, 2) + Math.pow(Number(y) - centerY, 2))
   })
 
-  const scale = useTransform(distance as any, [0, 150], [1.1, 1])
+  const scale = useTransform(distance, [0, 150], [1.1, 1])
   const scaleSpring = useSpring(scale, {
     mass: 0.1,
     stiffness: 150,

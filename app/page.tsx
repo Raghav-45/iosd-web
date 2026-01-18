@@ -2,25 +2,16 @@
 
 import { Globe } from "@/components/ui/globe";
 import { RetroGrid } from "@/components/ui/retro-grid";
-import { RainbowButton } from "@/components/ui/rainbow-button";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { Marquee } from "@/components/ui/marquee";
-import { AvatarCircles } from "@/components/ui/avatar-circles";
-import { WordRotate } from "@/components/ui/word-rotate";
-import { Calendar, GraduationCap, Users, Image as ImageIcon, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { EVENTS, NOTABLE_ALUMNI, TEAM_MEMBERS, GALLERY_IMAGES } from "@/lib/config";
 import {
-  ABOUT_EVENTS,
   DOMAINS,
   ABOUT_STATS,
-  ABOUT_CONTENT,
   GALLERY_PREVIEW,
 } from "@/lib/config";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import { JoinUsButton } from "@/components/join-us-button";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -114,10 +105,11 @@ export default function Home() {
               key={index}
               className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {item.label && (
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
@@ -136,7 +128,7 @@ export default function Home() {
           Ready to <span className="text-accent">Build?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl mb-8 text-lg">
-          Join the most vibrant technical community at MAIT. Whether you're a beginner or a pro, there's a place for you here.
+          Join the most vibrant technical community at MAIT. Whether you&apos;re a beginner or a pro, there&apos;s a place for you here.
         </p>
         <JoinUsButton/>
       </section>

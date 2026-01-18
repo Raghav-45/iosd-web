@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { GALLERY_IMAGES, type GalleryImage } from "@/lib/config";
 import { GalleryModal } from "@/components/gallery/GalleryModal";
 
@@ -61,11 +62,13 @@ export default function GalleryPage() {
                             onClick={() => setSelectedImage(image)}
                         >
                             <div className="relative overflow-hidden rounded-lg bg-muted">
-                                <img
+                                <Image
                                     src={image.src}
                                     alt={image.alt}
+                                    width={400}
+                                    height={image.height}
                                     className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                                    style={{ height: `${image.height}px` }}
+                                    unoptimized
                                 />
                                 <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                     <div>

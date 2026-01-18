@@ -9,9 +9,7 @@ import { JoinUsButton } from "@/components/join-us-button";
 import {
   ABOUT_EVENTS,
   TEAM_MEMBERS,
-  ABOUT_STATS,
   ABOUT_CONTENT,
-  GALLERY_PREVIEW,
 } from "@/lib/config";
 import { WordRotate } from "@/components/ui/word-rotate";
 import CompleteTeamSection from './complete';

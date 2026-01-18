@@ -18,7 +18,6 @@ const SiteNav = ({}) => {
       className="fixed bottom-8 flex w-full justify-center"
     >
       <FloatingDock
-        mobileClassName="translate-y-20" // only for demo, remove for production
         items={NAV_LINKS}
       />
     </motion.div>

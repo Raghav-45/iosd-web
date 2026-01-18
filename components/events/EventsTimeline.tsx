@@ -1,5 +1,4 @@
 import { Event } from "@/lib/config/events"
-import { cn } from "@/lib/utils"
 
 interface EventsTimelineProps {
     events: Event[]

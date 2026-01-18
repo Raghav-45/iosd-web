@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { MeshGradient } from "@paper-design/shaders-react"
 import { DotPattern } from "@/components/ui/dot-pattern"
 import { EVENTS } from "@/lib/config/events"
 import { cn } from "@/lib/utils"

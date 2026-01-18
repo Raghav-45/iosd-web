@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { Event } from "@/lib/config/events"
+import Image from "next/image"
 
 interface EventPreviewCardProps {
   event: Event
@@ -20,11 +21,14 @@ export function EventPreviewCard({ event, priority, onClick }: EventPreviewCardP
     >
         {/* Image */}
         <div className="relative aspect-[16/10] overflow-hidden">
-          <img
+          <Image
             src={event.coverImage}
             alt={event.title}
+            width={800}
+            height={500}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading={priority ? "eager" : "lazy"}
+            unoptimized
           />
 
           {/* Hover veil */}

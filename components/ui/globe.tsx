@@ -8,7 +8,24 @@ import { cn } from "@/lib/utils"
 
 const MOVEMENT_DAMPING = 1400
 
-const GLOBE_CONFIG: any = {
+interface GlobeConfig {
+  width: number
+  height: number
+  onRender: (state: Record<string, number>) => void
+  devicePixelRatio: number
+  phi: number
+  theta: number
+  dark: number
+  diffuse: number
+  mapSamples: number
+  mapBrightness: number
+  baseColor: [number, number, number]
+  markerColor: [number, number, number]
+  glowColor: [number, number, number]
+  markers: Array<{ location: [number, number]; size: number }>
+}
+
+const GLOBE_CONFIG: GlobeConfig = {
   width: 1000,
   height: 1000,
   onRender: () => {},
@@ -41,10 +58,10 @@ export function Globe({
   config = GLOBE_CONFIG,
 }: {
   className?: string
-  config?: any
+  config?: GlobeConfig
 }) {
-  let phi = 0
-  let width = 0
+  const phiRef = useRef(0)
+  const widthRef = useRef(0)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
@@ -74,7 +91,7 @@ export function Globe({
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth
+        widthRef.current = canvasRef.current.offsetWidth
       }
     }
 
@@ -83,13 +100,13 @@ export function Globe({
 
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
-      onRender: (state: any) => {
-        if (!pointerInteracting.current) phi += 0.005
-        state.phi = phi + rs.get()
-        state.width = width * 2
-        state.height = width * 2
+      width: widthRef.current * 2,
+      height: widthRef.current * 2,
+      onRender: (state: Record<string, number>) => {
+        if (!pointerInteracting.current) phiRef.current += 0.005
+        state.phi = phiRef.current + rs.get()
+        state.width = widthRef.current * 2
+        state.height = widthRef.current * 2
       },
     })
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from '@/lib/config'
 import { useRef, useState } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from 'motion/react'
 
 export function Footer() {
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
@@ -112,8 +112,8 @@ function MagneticSocialIcon({
   setHoveredSocial,
 }: {
   social: { title: string; href: string; icon: React.ReactNode }
-  mouseX: any
-  mouseY: any
+  mouseX: MotionValue<number>
+  mouseY: MotionValue<number>
   hoveredSocial: string | null
   setHoveredSocial: (title: string | null) => void
 }) {
@@ -127,8 +127,8 @@ function MagneticSocialIcon({
     return Math.sqrt(Math.pow(Number(x) - centerX, 2) + Math.pow(Number(y) - centerY, 2))
   })
 
-  const scale = useTransform(distance as any, [0, 150], [1.4, 1])
-  const iconScale = useTransform(distance as any, [0, 150], [1.3, 1])
+  const scale = useTransform(distance, [0, 150], [1.4, 1])
+  const iconScale = useTransform(distance, [0, 150], [1.3, 1])
 
   const scaleSpring = useSpring(scale, {
     mass: 0.1,
@@ -177,8 +177,8 @@ function MagneticNavLink({
   mouseY,
 }: {
   link: { title: string; href: string }
-  mouseX: any
-  mouseY: any
+  mouseX: MotionValue<number>
+  mouseY: MotionValue<number>
 }) {
   const ref = useRef<HTMLAnchorElement>(null)
 
@@ -190,7 +190,7 @@ function MagneticNavLink({
     return Math.sqrt(Math.pow(Number(x) - centerX, 2) + Math.pow(Number(y) - centerY, 2))
   })
 
-  const scale = useTransform(distance as any, [0, 150], [1.15, 1])
+  const scale = useTransform(distance, [0, 150], [1.15, 1])
   const scaleSpring = useSpring(scale, {
     mass: 0.1,
     stiffness: 150,

@@ -1,61 +1,16 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
-import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
 import { AvatarCircles } from "@/components/ui/avatar-circles"
 import { DotPattern } from "@/components/ui/dot-pattern"
-import { JoinUsButton } from "@/components/join-us-button"
 import { AlumniIndex } from "@/components/alumni/AlumniIndex"
 import { AlumniOutcomes } from "@/components/alumni/AlumniOutcomes"
-import { NOTABLE_ALUMNI, ALUMNI_OUTCOMES } from "@/lib/config"
-import {
-  Briefcase,
-  Globe,
-  Trophy,
-  Rocket,
-} from "lucide-react"
+import { ALUMNI_OUTCOMES, NOTABLE_ALUMNI } from "@/lib/config"
 import Meta from "@/public/logos/meta-3.svg"
 import Uber from "@/public/logos/uber-15.svg"
 import Apple from "@/public/logos/Apple_logo_white.svg"
 import ZS from "@/public/logos/zs.png"
 import PayPal from "@/public/logos/paypal.png"
-
-const features = [
-  {
-    Icon: Trophy,
-    name: "Achievements",
-    description: "Alumni winning hackathons and competitions worldwide.",
-    className: "lg:col-span-2",
-    href: "#",
-    cta: "Learn more",
-    background: <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/20" />,
-  },
-  {
-    Icon: Briefcase,
-    name: "Careers",
-    description: "Engineers at companies shaping the global tech ecosystem.",
-    href: "#",
-    cta: "Learn more",
-    background: <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/20" />,
-  },
-  {
-    Icon: Rocket,
-    name: "Startups",
-    description: "Founders building products, companies, and platforms.",
-    href: "#",
-    cta: "Learn more",
-    background: <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/20" />,
-  },
-  {
-    Icon: Globe,
-    name: "Global Network",
-    description: "A community spanning 15+ countries.",
-    className: "lg:col-span-2",
-    href: "#",
-    cta: "Learn more",
-    background: <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/20" />,
-  },
-]
 
 const companies = [
   {
