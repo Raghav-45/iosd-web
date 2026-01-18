@@ -10,7 +10,7 @@ import { GalleryModal } from "@/components/gallery/GalleryModal"
 import { GALLERY_IMAGES, type GalleryImage } from "@/lib/config"
 import { UPCOMING_EVENT } from "@/lib/config/events"
 import { UpcomingEventCard } from "@/components/events/UpcomingEvent"
-import { EventsTimeline } from "@/components/events/EventsTimeline"
+import EventsTimeline from "@/components/events/EventsTimeline"
 import { GalleryBridge } from "@/components/gallery/GalleryBridge"
 
 const featured = EVENTS.filter(e => e.featured)
@@ -19,10 +19,10 @@ const recent = EVENTS.filter(e => !e.featured)
 export default function EventsPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
-  const handleEventClick = (src:string) => {
+  const handleEventClick = (src: string) => {
     if (GALLERY_IMAGES.length > 0) {
-      const image = GALLERY_IMAGES.find((event)=>event.src===src)
-      if(!image) {
+      const image = GALLERY_IMAGES.find((event) => event.src === src)
+      if (!image) {
         setSelectedImage(null)
         return
       }
@@ -71,7 +71,7 @@ export default function EventsPage() {
               key={event.id}
               event={event}
               priority
-              onClick={()=>handleEventClick(event.coverImage)}
+              onClick={() => handleEventClick(event.coverImage)}
             />
           ))}
         </div>
@@ -88,7 +88,7 @@ export default function EventsPage() {
             <EventPreviewCard
               key={event.id}
               event={event}
-              onClick={()=>handleEventClick(event.coverImage)}
+              onClick={() => handleEventClick(event.coverImage)}
             />
           ))}
         </div>

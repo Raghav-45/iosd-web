@@ -76,20 +76,43 @@
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 
   @keyframes rainbow {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
+    0% {
+      background-position: 0%;
+    }
+
+    100% {
+      background-position: 200%;
+    }
   }
+
   @keyframes grid {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(0); }
+    0% {
+      transform: translateY(-50%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
   }
+
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-100% - var(--gap))); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
   }
+
   @keyframes marquee-vertical {
-    from { transform: translateY(0); }
-    to { transform: translateY(calc(-100% - var(--gap))); }
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
   }
 }
 
@@ -149,10 +172,13 @@
 ------------------------------------------ */
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.4;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.05);
@@ -172,14 +198,16 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 } */
- @layer utilities {
+@layer utilities {
   @keyframes moving-border {
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -205,4 +233,89 @@
     border-radius: 0.625rem;
     z-index: 1;
   }
+}
+
+/* -----------------------------------------
+   TIMELINE COLORS
+------------------------------------------ */
+:root {
+  /* vertical line gradient */
+  --timeline-line-gradient: linear-gradient(180deg,
+      rgba(99, 102, 241, 0.9),
+      rgba(34, 211, 238, 0.9));
+
+  /* default icon gradient fallback */
+  --timeline-icon-gradient: linear-gradient(135deg,
+      #67d8f0 0%,
+      #0052d4 100%);
+
+  /* date badge HSL values (used with hsl(var(--date-badge))) */
+  --date-badge: 210 16% 18%;
+
+  /* text colors for timeline cards */
+  --text-primary: 210 10% 10%;
+  --text-secondary: 210 8% 40%;
+
+  /* card shadows */
+  --shadow-card: 0 6px 18px rgba(2, 6, 23, 0.08);
+  --shadow-glow: 0 10px 30px rgba(99, 102, 241, 0.12);
+}
+
+/* gradient utility classes for timeline cards */
+.bg-gradient-flame {
+  background-image: linear-gradient(135deg, #ff7a18 0%, #af002d 100%);
+}
+
+.bg-gradient-sunset {
+  background-image: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.bg-gradient-ocean {
+  background-image: linear-gradient(135deg, #67d8f0 0%, #0052d4 100%);
+}
+
+.bg-gradient-midnight {
+  background-image: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+}
+
+
+/* -----------------------------------------
+   TIMELINE CARD COLORS — Enhanced
+------------------------------------------ */
+:root {
+  --timeline-line-gradient: linear-gradient(180deg,
+      rgba(99, 102, 241, 0.9),
+      rgba(34, 211, 238, 0.9));
+
+  --timeline-icon-gradient: linear-gradient(135deg,
+      #6366f1 0%,
+      #3b82f6 100%);
+
+  --date-badge: 220 16% 20%;
+  /* deeper blue-gray for contrast */
+
+  --text-primary: 0 0% 100%;
+  /* white text for dark cards */
+  --text-secondary: 220 10% 70%;
+  /* soft blue-gray for subtitles */
+
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 10px 30px rgba(99, 102, 241, 0.25);
+}
+
+/* Gradient utility classes — vivid and thematic */
+.bg-gradient-flame {
+  background-image: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
+}
+
+.bg-gradient-sunset {
+  background-image: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+.bg-gradient-ocean {
+  background-image: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+}
+
+.bg-gradient-midnight {
+  background-image: linear-gradient(135deg, #232526 0%, #414345 100%);
 }

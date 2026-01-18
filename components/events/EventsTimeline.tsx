@@ -1,3 +1,4 @@
+{/*
 import { Event } from "@/lib/config/events"
 import { cn } from "@/lib/utils"
 
@@ -26,7 +27,7 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
                 {years.map((year) => (
                     <div key={year} className="relative">
                         {/* Year header */}
-                        <div className="mb-12 flex items-center gap-6">
+{/*<div className="mb-12 flex items-center gap-6">
                             <span className="mono text-sm text-muted-foreground">
                                 {year}
                             </span>
@@ -35,7 +36,7 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
 
                         <div className="relative">
                             {/* Shared vertical line */}
-                            <div className="absolute left-3 top-0 h-full w-px bg-accent/40" />
+{/*<div className="absolute left-3 top-0 h-full w-px bg-accent/40" />
 
                             <div className="space-y-10">
                                 {eventsByYear[year].map((event) => (
@@ -44,12 +45,12 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
                                         className="relative flex items-start gap-6"
                                     >
                                         {/* Dot */}
-                                        <div className="relative z-10 flex w-6 justify-center">
+{/*<div className="relative z-10 flex w-6 justify-center">
                                             <span className="mt-1 h-2 w-2 rounded-full bg-accent opacity-80" />
                                         </div>
 
                                         {/* Content */}
-                                        <div className="flex-1">
+{/*<div className="flex-1">
                                             <div className="flex flex-wrap items-center gap-3">
                                                 <h3 className="text-lg font-light tracking-tight">
                                                     {event.title}
@@ -73,4 +74,35 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
             </div>
         </section>
     )
-}
+*/}
+
+
+import { EventLine } from "./EventLine";
+
+const EventsTimeline = () => {
+    return (
+        <div className="min-h-screen bg-background">
+            {/* Header Section */}
+            <header className="text-center py-16 px-4 animate-fade-in-up">
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4 tracking-tight">
+                    Our Events
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    Tracing the pulse of our progress through the events that shaped our journey
+                </p>
+            </header>
+
+            {/* Roadmap line */}
+            <EventLine />
+
+            {/* Footer Section */}
+            <footer className="text-center py-12 px-4 border-t border-border">
+                <p className="text-muted-foreground">
+                    The journey continues... Stay tuned for more amazing events
+                </p>
+            </footer>
+        </div>
+    );
+};
+
+export default EventsTimeline;
