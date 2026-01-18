@@ -25,15 +25,17 @@ export default function Home() {
 
         <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
 
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 mb-4 scale-270">
+            <Image
+              src="/IOSD_HD.png"
+              alt="IOSD Logo"
+              fill
+              className="object-contain animate-fade-in"
+              priority
+            />
+          </div>
 
-          {/* LOGO tba here*/}
-
-          {/* <h1 className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-tighter text-foreground">
-            IOSD
-            <span className="text-accent">.</span>
-          </h1> */}
-
-          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl">
+          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl pb-50">
             Maharaja Agrasen Institute of Technology
             <br className="hidden sm:block" />
           </div>
