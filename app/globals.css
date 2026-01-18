@@ -126,6 +126,17 @@
 }
 
 /* -----------------------------------------
+   CURSOR UTILITIES
+------------------------------------------ */
+.cursor-target {
+  cursor: none !important;
+}
+
+.cursor-none {
+  cursor: none !important;
+}
+
+/* -----------------------------------------
    SCROLLBAR -SUBTLE
 ------------------------------------------ */
 ::-webkit-scrollbar {
