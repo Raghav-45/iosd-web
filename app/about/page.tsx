@@ -14,6 +14,7 @@ import {
   GALLERY_PREVIEW,
 } from "@/lib/config";
 import { WordRotate } from "@/components/ui/word-rotate";
+import CompleteTeamSection from './complete';
 
 interface NotificationProps {
   name: string;
@@ -178,7 +179,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-
+          <CompleteTeamSection />
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-24">
         <div className="flex flex-col items-center gap-6 text-center">
@@ -191,6 +192,7 @@ export default function AboutPage() {
           <JoinUsButton />
         </div>
       </section>
+      
     </div>
   )
 }

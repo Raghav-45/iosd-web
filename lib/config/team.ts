@@ -20,8 +20,8 @@ export const TEAM_MEMBERS = [
     },
   },
   {
-    name: "James Wilson",
-    role: "Backend Engineer",
+    name: "Aayush Roy",
+    role: "Advisor",
     image: "https://avatars.githubusercontent.com/u/106103625",
     socials: {
       github: "#",
