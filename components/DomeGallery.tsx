@@ -676,8 +676,70 @@ const contentDiv = document.createElement('div');
   
   // Fallback if image fails to load
   tempImg.onerror = () => {
+    const textColor = '#FFFFFF'; // Default to white if image fails to load
+    
     reactRoot.render(
-      // ... your existing render code with default white color ...
+      <PixelCard className="w-full h-full">
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+          <img
+            src={rawSrc}
+            alt={rawAlt}
+            draggable={false}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              filter: grayscale ? 'grayscale(1)' : 'none',
+              display: 'block'
+            }}
+          />
+
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              padding: '12px 16px',
+              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.65) 100%)',
+              color: '#fff',
+              fontSize: '16px',
+              fontWeight: 600,
+              pointerEvents: 'none'
+            }}
+            aria-hidden
+          >
+            {rawAlt || ''}
+          </div>
+
+          <div
+            className="contact-info-overlay"
+            style={{
+              position: 'absolute',
+              right: 12,
+              top: 12,
+              color: textColor,
+              padding: '12px 16px',
+              borderRadius: 12,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 6,
+              opacity: 0,
+              transition: 'opacity 200ms ease',
+              pointerEvents: 'none'
+            }}
+            aria-hidden
+          >
+            <div className='cursor-target' style={{ fontSize: 40, fontWeight: 700 }}>Jane Doe</div>
+            <div className='cursor-target' style={{ fontSize: 20, opacity: 0.95 }}>Senior Designer</div>
+            <div className='cursor-target' style={{ fontSize: 11, opacity: 0.85, marginTop: 4, display: 'flex', gap: '5px', justifyContent: 'space-around' }}>
+              <Github color={textColor} />
+              <Linkedin color={textColor} />
+              <X color={textColor} />
+            </div>
+          </div>
+        </div>
+      </PixelCard>
     );
   };
 
