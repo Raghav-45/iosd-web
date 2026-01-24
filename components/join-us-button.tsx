@@ -34,7 +34,7 @@ export const JoinUsButton: React.FC<JoinUsButtonProps> = ({ className, ...props 
         width="24"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 text-accent transition-all duration-500 group-hover:rotate-60 group-hover:scale-110 group-hover:text-white" 
+        className="h-5 w-5 text-accent transition-all duration-500 group-hover:rotate-90 group-hover:scale-110 group-hover:text-white" 
       >
         <path d="M0 0h24v24H0z" fill="none"></path>
         <path
