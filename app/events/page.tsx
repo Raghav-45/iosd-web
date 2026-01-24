@@ -107,7 +107,7 @@ export default function EventsPage() {
       />
 
 
-      <EventsTimeline events={EVENTS} />
+      <EventsTimeline />
 
       <GalleryBridge />
 

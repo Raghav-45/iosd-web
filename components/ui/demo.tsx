@@ -4,10 +4,9 @@ import { useState } from "react"
 import { MeshGradient, DotOrbit } from "@paper-design/shaders-react"
 
 export default function DemoOne() {
-  const [intensity, _setIntensity] = useState(1.5)
-  const [speed, _setSpeed] = useState(1.0)
-  const [_isInteracting, _setIsInteracting] = useState(false)
-  const [activeEffect, _setActiveEffect] = useState("mesh")
+  const [intensity] = useState(1.5)
+  const [speed] = useState(1.0)
+  const [activeEffect] = useState("mesh")
   const [copied, setCopied] = useState(false)
 
   const copyToClipboard = async () => {
