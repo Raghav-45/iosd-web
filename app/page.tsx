@@ -7,11 +7,16 @@ import {
   DOMAINS,
   ABOUT_STATS,
   GALLERY_PREVIEW,
+  ABOUT_CONTENT,
+  ABOUT_PREVIEW,
 } from "@/lib/config";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import { JoinUsButton } from "@/components/join-us-button";
 import Image from "next/image";
+import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -43,16 +48,164 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Domains Bento Grid */}
-      <section className="container mx-auto px-4 py-24">
-        <h2 className="mb-12 text-3xl font-light tracking-tight text-center">
-          Technical Domains
-        </h2>
-        <BentoGrid className="lg:grid-rows-2">
-          {DOMAINS.map((feature) => (
-            <BentoCard key={feature.name} {...feature} />
-          ))}
-        </BentoGrid>
+
+      {/* Velocity Scroll */}
+      <section className="py-20">
+        <ScrollVelocityRow
+          baseVelocity={3}
+          className="text-center text-4xl font-light tracking-tight md:text-7xl"
+        >
+          {ABOUT_CONTENT.velocity.text}
+        </ScrollVelocityRow>
+      </section>
+
+      {/* ============================================
+          VARIATION A - Split Cinematic Layout
+          Clean split with magnetic hover link
+      ============================================ */}
+      <section className="container mx-auto px-4 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image Side */}
+          <div className="relative aspect-[4/3] overflow-hidden group">
+            <Image
+              src={ABOUT_PREVIEW.image}
+              alt="IOSD Community"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6">
+              <span className="mono text-xs text-muted-foreground">EST. 2015</span>
+            </div>
+          </div>
+          
+          {/* Content Side */}
+          <div className="space-y-8">
+            <span className="mono text-xs text-accent tracking-widest">{ABOUT_PREVIEW.tagline}</span>
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-tight">
+              {ABOUT_PREVIEW.title}
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {ABOUT_PREVIEW.description}
+            </p>
+            
+            {/* Magnetic Link */}
+            <Link 
+              href="/about" 
+              className="group/link inline-flex items-center gap-3 pt-4 cursor-target"
+              style={{ cursor: 'none' }}
+            >
+              <span className="text-sm font-medium tracking-wide group-hover/link:text-accent transition-colors duration-300">
+                Discover Our Story
+              </span>
+              <div className="relative w-10 h-10 border border-border group-hover/link:border-accent group-hover/link:bg-accent/10 transition-all duration-300 flex items-center justify-center overflow-hidden">
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-6" />
+                <ArrowRight className="w-4 h-4 absolute -translate-x-6 transition-transform duration-300 group-hover/link:translate-x-0 text-accent" />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          VARIATION B - Editorial Overlay
+          Full-width with text overlay & reveal
+      ============================================ */}
+      <section className="relative py-32 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden group">
+            {/* Background Image */}
+            <Image
+              src={ABOUT_PREVIEW.image}
+              alt="IOSD Community"
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+            
+            {/* Content Overlay */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="max-w-xl p-8 md:p-12 space-y-6">
+                <span className="mono text-xs text-accent">{ABOUT_PREVIEW.tagline}</span>
+                <h2 className="text-3xl md:text-5xl font-light tracking-tight">
+                  {ABOUT_PREVIEW.title}
+                </h2>
+                <p className="text-muted-foreground hidden md:block">
+                  {ABOUT_PREVIEW.description}
+                </p>
+                
+                {/* Expanding Link */}
+                <Link 
+                  href="/about"
+                  className="group/btn inline-flex items-center gap-2 border border-border px-6 py-3 hover:border-accent hover:bg-accent/5 transition-all duration-500 cursor-target"
+                  style={{ cursor: 'none' }}
+                >
+                  <span className="mono text-xs tracking-widest">ABOUT</span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 group-hover/btn:text-accent" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          VARIATION C - Minimal Typography Focus
+          Large text dominant with accent image
+      ============================================ */}
+      <section className="container mx-auto px-4 py-32">
+        <div className="grid grid-cols-12 gap-6 lg:gap-12">
+          {/* Large Typography */}
+          <div className="col-span-12 lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <span className="mono text-xs text-muted-foreground tracking-widest block">{ABOUT_PREVIEW.tagline}</span>
+              <h2 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.1]">
+                We turn <span className="text-accent">curious minds</span> into capable builders.
+              </h2>
+            </div>
+            <p className="text-muted-foreground text-lg max-w-lg">
+              {ABOUT_PREVIEW.description}
+            </p>
+            
+            {/* Highlights */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              {ABOUT_PREVIEW.highlights.map((item, i) => (
+                <span key={i} className="mono text-xs px-4 py-2 border border-border bg-surface-1">
+                  {item}
+                </span>
+              ))}
+            </div>
+            
+            {/* Creative Link - Line that extends on hover */}
+            <Link 
+              href="/about"
+              className="group/line inline-flex items-center gap-4 pt-8 cursor-target"
+              style={{ cursor: 'none' }}
+            >
+              <div className="w-12 h-[1px] bg-muted-foreground group-hover/line:w-24 group-hover/line:bg-accent transition-all duration-500" />
+              <span className="mono text-xs tracking-widest group-hover/line:text-accent transition-colors duration-300">
+                READ MORE
+              </span>
+              <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover/line:opacity-100 group-hover/line:translate-x-0 group-hover/line:text-accent transition-all duration-300" />
+            </Link>
+          </div>
+          
+          {/* Accent Image */}
+          <div className="col-span-12 lg:col-span-5 relative">
+            <div className="relative aspect-[3/4] overflow-hidden group">
+              <Image
+                src={ABOUT_PREVIEW.image}
+                alt="IOSD Community"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 border border-border pointer-events-none" />
+              {/* Corner accent */}
+              <div className="absolute -bottom-3 -left-3 w-6 h-6 border-l-2 border-b-2 border-accent" />
+              <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent" />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Testimonials Section */}
@@ -129,7 +282,7 @@ export default function Home() {
         <p className="text-muted-foreground max-w-xl mb-8 text-lg">
           Join the most vibrant technical community at MAIT. Whether you&apos;re a beginner or a pro, there&apos;s a place for you here.
         </p>
-        <JoinUsButton/>
+        <JoinUsButton />
       </section>
     </div>
   );

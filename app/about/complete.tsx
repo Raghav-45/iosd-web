@@ -237,7 +237,7 @@ function TeamMemberItem({ member }: TeamMemberItemProps) {
   return (
     <div
       ref={itemRef}
-      className="team-member-item group relative cursor-pointer py-4 border-b border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50"
+      className="team-member-item group relative cursor-pointer py-4 border-b border-gray-200 dark:border-gray-800 last:border-b-0 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -387,9 +387,7 @@ interface CompleteTeamSectionProps {
 }
 
 export default function CompleteTeamSection({
-  title = "Meet the Team",
-  subtitle = "Get to know the talented people behind our work. Hover over each member to see their photo.",
-  className = "",
+  className="",
   members = teamMembers,
 }: CompleteTeamSectionProps) {
   return (
@@ -397,24 +395,11 @@ export default function CompleteTeamSection({
       <TeamStyles />
       <section className={`team-section w-full py-16 md:py-24 ${className}`}>
         <div className="container mx-auto px-4 md:px-8">
-          <header className="team-section-header mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-              {title}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
-              {subtitle}
-            </p>
-          </header>
           <div className="team-list">
             {members.map((member) => (
               <TeamMemberItem key={member.id} member={member} />
             ))}
           </div>
-          <footer className="team-section-footer mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              {members.length} team members strong
-            </p>
-          </footer>
         </div>
       </section>
     </>

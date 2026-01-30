@@ -1,68 +1,45 @@
 import {
-  Code,
-  Database,
-  Brain,
-  BarChart,
   Users,
   Calendar,
   Trophy,
 } from "lucide-react";
 
+export const ABOUT_PREVIEW = {
+  tagline: "Who We Are",
+  title: "Building Tomorrow's Tech Leaders",
+  description: "IOSD is where curiosity meets code. We're a student-driven community at MAIT dedicated to fostering real-world development skills through hands-on projects, hackathons, workshops, and peer mentorship. From web dev to ML, we build things that matter.",
+  highlights: [
+    "50+ workshops annually",
+    "National-level hackathons",
+    "Industry mentorship programs",
+  ],
+  image: "/gallery/impulse-25/cover.jpg",
+};
+
 export const DOMAINS = [
   {
-    Icon: Code,
+    icon: "FaCode",
     name: "Web Development",
     description: "Building modern, scalable web applications using the latest tech stacks.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-2",
-    icons:[ "FaHtml5", "FaCss3Alt", "FaReact", "FaNodeJs", "MdOutlineDevices", 
-      "SiJavascript", "SiTypescript", 
-    ]
   },
   {
-    Icon: Brain,
+    icon: "GiBrain",
     name: "Machine Learning",
     description: "Building intelligent systems and exploring artificial intelligence.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-1",
-    icons:[
-       "RiRobotLine", "TbManualGearbox", 
-      "SiTensorflow", "SiPytorch", "AiOutlineDotChart", "BiChip", 
-      "LuBrainCircuit", "MdModelTraining"
-    ]
-
   },
   {
-    Icon: Database,
+    icon: "TbBinaryTree",
     name: "DSA & CP",
     description: "Mastering algorithms and competing in global coding contests.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-1",
-    icons:[
-      "PiTreeStructureFill", "TiFlowMerge", "MdTimeline", 
-      "GiSandsOfTime", "BsGraphUp", "CgLoadbar", "ImTree", 
-      "TbBinaryTree", "MdOutlineAlgorithm"
-    ]
   },
   {
-    Icon: BarChart,
+    icon: "FaDatabase",
     name: "Data Science",
     description: "Analyzing data and extracting insights through statistical methods.",
-    href: "#",
-    cta: "Learn More",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-span-2",
-    icons:[
-      "FaDatabase", "FaChartPie", "MdAnalytics", 
-      "SiPandas", "SiScipy", "TbSql", "VscGraph", 
-      "AiOutlineAreaChart", "BiTable"
-    ]
   },
 ];
 
