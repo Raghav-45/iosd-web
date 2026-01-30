@@ -38,7 +38,8 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "border h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 flex dark:bg-neutral-900",
+        "h-18 items-end gap-4 px-5 pb-3 flex",
+        "border border-border bg-surface-2 backdrop-blur-md shadow-[0_0_30px_rgba(103,190,217,0.08)]",
         className,
       )}
     >
@@ -68,14 +69,14 @@ function IconContainer({
     return val - bounds.x - bounds.width / 2;
   });
 
-  const widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  const heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  const widthTransform = useTransform(distance, [-150, 0, 150], [44, 80, 44]);
+  const heightTransform = useTransform(distance, [-150, 0, 150], [44, 80, 44]);
 
-  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
+  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [22, 36, 22]);
   const heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
-    [20, 40, 20],
+    [22, 36, 22],
   );
 
   const width = useSpring(widthTransform, {
@@ -109,7 +110,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200 dark:bg-neutral-800"
+        className="relative flex aspect-square items-center justify-center border border-border/60 bg-foreground/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200"
       >
         <AnimatePresence>
           {hovered && (
@@ -117,7 +118,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
+              className="absolute -top-8 left-1/2 w-fit px-3 py-1 whitespace-pre mono text-[10px] tracking-widest uppercase border border-border bg-background text-foreground"
             >
               {title}
             </motion.div>
@@ -125,7 +126,7 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center text-muted-foreground group-hover:text-foreground"
         >
           {icon}
         </motion.div>
