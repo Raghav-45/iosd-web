@@ -84,7 +84,7 @@ const EventsTimeline = () => {
             {/* Header Section */}
             <header className="text-center py-16 px-4 animate-fade-in-up">
                 <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4 tracking-tight">
-                    Our Events
+                    Timeline
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                     Tracing the pulse of our progress through the events that shaped our journey
@@ -93,13 +93,6 @@ const EventsTimeline = () => {
 
             {/* Roadmap line */}
             <EventLine />
-
-            {/* Footer Section */}
-            <footer className="text-center py-12 px-4 border-t border-border">
-                <p className="text-muted-foreground">
-                    The journey continues... Stay tuned for more amazing events
-                </p>
-            </footer>
         </div>
     );
 };

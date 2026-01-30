@@ -23,15 +23,16 @@ export const EventLine = () => {
                     return (
                         <div key={event.id} className="relative">
                             {/* Event Icon */}
-                            <div className="absolute left-1/2 transform -translate-x-1/2 z-10 hidden md:flex">
+                            <div className="absolute left-1/2 transform -translate-x-1/2 z-[1] hidden md:flex">
                                 <div
-                                    className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg animate-scale-in border-4"
+                                    className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg animate-scale-in border-2"
                                     style={{
                                         background: "var(--timeline-icon-gradient)",
-                                        borderColor: "rgba(0,0,0,0.6)",
+                                        borderColor: "var(--accent)",
+                                        boxShadow: "0 0 20px oklch(0.78 0.12 220 / 0.3)",
                                     }}
                                 >
-                                    <Icon className="w-6 h-6 text-white" />
+                                    <Icon className="w-6 h-6 text-background" />
                                 </div>
                             </div>
 
@@ -61,15 +62,16 @@ export const EventLine = () => {
                 {/* Upcoming Event */}
                 {UPCOMING_EVENT && (
                     <div className="relative">
-                        <div className="absolute left-1/2 transform -translate-x-1/2 z-10 hidden md:flex">
+                        <div className="absolute left-1/2 transform -translate-x-1/2 z-[1] hidden md:flex">
                             <div
-                                className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg animate-scale-in border-4"
+                                className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg animate-scale-in border-2"
                                 style={{
                                     background: "var(--timeline-icon-gradient)",
-                                    borderColor: "rgba(0,0,0,0.6)",
+                                    borderColor: "var(--accent)",
+                                    boxShadow: "0 0 24px oklch(0.78 0.12 220 / 0.4)",
                                 }}
                             >
-                                <Rocket className="w-6 h-6 text-white" />
+                                <Rocket className="w-6 h-6 text-background" />
                             </div>
                         </div>
 

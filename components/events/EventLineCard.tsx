@@ -34,40 +34,37 @@ export const EventLineCard = ({
                 className={`
           ${animationClass}
           relative w-full max-w-md pt-14 pb-6 px-6
-          border border-black/60 shadow-[var(--shadow-card)] overflow-hidden
-          bg-[hsl(var(--card))] hover:bg-[hsl(var(--card-hover))]
+          border border-border shadow-[var(--shadow-card)] overflow-hidden
+          bg-surface-1 hover:bg-surface-2
           transition-all duration-300
-          hover:scale-105 hover:shadow-[var(--shadow-glow)]
+          hover:scale-[1.02] hover:shadow-[var(--shadow-glow)]
+          hover:border-accent/30
         `}
                 style={{ animationDelay: `${delay}ms` }}
             >
                 {/* Decorative dots */}
                 <div
-                    className="absolute top-4 left-4 w-3 h-3 rounded-full"
-                    style={{ background: "rgba(255,255,255,0.06)" }}
+                    className="absolute top-4 left-4 w-3 h-3 rounded-full bg-accent/20"
                 />
                 <div
-                    className="absolute top-4 left-10 w-2 h-2 rounded-full"
-                    style={{ background: "rgba(255,255,255,0.04)" }}
+                    className="absolute top-4 left-10 w-2 h-2 rounded-full bg-accent/10"
                 />
 
                 {/* Date Badge */}
                 <div
-                    className="absolute top-0 right-4 px-4 py-2 rounded-lg"
+                    className="absolute top-0 right-4 px-4 py-2 border-l border-b border-accent/20"
                     style={{
-                        background: "hsl(var(--date-badge) / 0.6)",
-                        backdropFilter: "blur(6px)",
+                        background: "oklch(0 0 0 / 0.6)",
+                        backdropFilter: "blur(8px)",
                     }}
                 >
                     <div
-                        className="text-xs font-semibold tracking-wider"
-                        style={{ color: "hsl(var(--text-secondary))" }}
+                        className="mono text-xs text-accent tracking-wider"
                     >
                         {date.split(" ")[0]}
                     </div>
                     <div
-                        className="text-2xl font-bold leading-none"
-                        style={{ color: "hsl(var(--text-primary))" }}
+                        className="text-2xl font-light leading-none text-foreground"
                     >
                         {date.split(" ")[1]}
                     </div>
@@ -79,28 +76,25 @@ export const EventLineCard = ({
                         <img
                             src={coverImage}
                             alt={title}
-                            className="w-16 h-16 rounded-lg object-cover border border-black/30 shadow-sm"
+                            className="w-16 h-16 object-cover border border-border shadow-sm"
                         />
                     )}
 
                     <div className="flex-1">
                         <h3
-                            className="text-2xl font-bold mb-2 leading-tight"
-                            style={{ color: "hsl(var(--text-primary))" }}
+                            className="text-xl font-light tracking-tight mb-2 leading-tight text-foreground"
                         >
                             {title}
                         </h3>
                         {subtitle && (
                             <p
-                                className="text-sm mb-2 font-light tracking-wide"
-                                style={{ color: "hsl(var(--text-secondary))" }}
+                                className="mono text-xs mb-2 text-accent"
                             >
                                 {subtitle}
                             </p>
                         )}
                         <p
-                            className="text-base leading-relaxed"
-                            style={{ color: "hsl(var(--text-primary))" }}
+                            className="text-sm text-muted-foreground leading-relaxed"
                         >
                             {description}
                         </p>

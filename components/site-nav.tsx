@@ -15,7 +15,7 @@ const SiteNav = ({}) => {
         damping: 12,
         delay: 0.2,
       }}
-      className="fixed bottom-8 flex w-full justify-center"
+      className="fixed bottom-8 z-50 flex w-full justify-center"
     >
       <FloatingDock
         items={NAV_LINKS}
