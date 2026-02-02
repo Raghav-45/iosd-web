@@ -5,7 +5,6 @@ import { RetroGrid } from "@/components/ui/retro-grid";
 import { FAQ_ITEMS } from "@/lib/config";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { WhatWeOffer } from "@/components/sections/what-we-offer";
 import { TrustedBy } from "@/components/sections/trusted-by";
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQSection } from "@/components/ui/faq-section";
@@ -67,9 +66,6 @@ export default function Home() {
 
       {/* Trusted By / Alumni Work At */}
       <TrustedBy />
-
-      {/* What We Offer - Broad Benefits */}
-      <WhatWeOffer />
 
       {/* Technical Domains - Specific Tracks */}
       <DomainsSection />
