@@ -10,7 +10,7 @@ import {
   useTransform,
 } from "motion/react";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 
 export const FloatingDock = ({
@@ -33,6 +33,7 @@ const FloatingDockDesktop = ({
   className?: string;
 }) => {
   const mouseX = useMotionValue(Infinity);
+  
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -61,10 +62,11 @@ function IconContainer({
   href: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isActive = pathname === href;
 
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
     return val - bounds.x - bounds.width / 2;
   });
 

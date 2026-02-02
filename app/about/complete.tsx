@@ -195,11 +195,11 @@ const TeamStyles = () => (
 
     .team-member-card {
       transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     .team-member-card:hover {
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
     }
 
     .team-list > div {
@@ -237,28 +237,29 @@ function TeamMemberItem({ member }: TeamMemberItemProps) {
   return (
     <div
       ref={itemRef}
-      className="team-member-item group relative cursor-pointer py-4 border-b border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50"
+      className="team-member-item cursor-target group relative py-4 border-b border-border transition-colors hover:bg-muted/30"
+      style={{ cursor: 'none' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 px-4">
         <div className="flex items-center gap-2 text-xs sm:text-sm">
-          <span className="font-semibold text-gray-900 dark:text-white">
+          <span className="font-semibold text-foreground">
             {member.department}
           </span>
-          <span className="text-gray-400">/</span>
-          <span className="text-gray-600 dark:text-gray-400">
+          <span className="text-muted-foreground/50">/</span>
+          <span className="text-muted-foreground">
             {member.role}
           </span>
         </div>
-        <span className="text-base sm:text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <span className="text-base sm:text-lg font-medium text-foreground group-hover:text-accent transition-colors">
           {member.name}
         </span>
       </div>
 
       {isHovered && (
         <div className="hidden sm:block absolute right-48 top-1/2 -translate-y-1/2 z-50">
-          <div className="team-member-card w-72 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl animate-popup border border-gray-200 dark:border-gray-700">
+          <div className="cursor-target team-member-card w-72 bg-background border border-border overflow-hidden animate-popup">
             <div className="relative w-full h-48">
               {!imageError ? (
                 <Image
@@ -271,49 +272,49 @@ function TeamMemberItem({ member }: TeamMemberItemProps) {
                   priority
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <span className="text-white text-5xl font-bold">
+                <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                  <span className="text-foreground text-5xl font-bold">
                     {member.name.split(" ").map((n) => n[0]).join("")}
                   </span>
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="text-white font-bold text-lg">{member.name}</h3>
-                <p className="text-white/80 text-sm">{member.role}</p>
+                <h3 className="text-foreground font-bold text-lg">{member.name}</h3>
+                <p className="text-muted-foreground text-sm mono">{member.role}</p>
               </div>
             </div>
 
             <div className="p-4">
               {member.bio && (
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <p className="text-muted-foreground text-sm mb-4">
                   {member.bio}
                 </p>
               )}
               {hasSocials && (
-                <div className="flex items-center gap-3 pt-2 border-t border-gray-100 dark:border-gray-800">
+                <div className="flex items-center gap-3 pt-2 border-t border-border">
                   {member.socials.linkedin && (
-                    <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition-colors">
+                    <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}>
                       <LinkedInIcon />
                     </a>
                   )}
                   {member.socials.github && (
-                    <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-foreground transition-colors" style={{ cursor: 'none' }}>
                       <GitHubIcon />
                     </a>
                   )}
                   {member.socials.instagram && (
-                    <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-600 transition-colors">
+                    <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}>
                       <InstagramIcon />
                     </a>
                   )}
                   {member.socials.twitter && (
-                    <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+                    <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-foreground transition-colors" style={{ cursor: 'none' }}>
                       <TwitterIcon />
                     </a>
                   )}
                   {member.socials.website && (
-                    <a href={member.socials.website} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-600 transition-colors">
+                    <a href={member.socials.website} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}>
                       <WebsiteIcon />
                     </a>
                   )}
@@ -322,14 +323,14 @@ function TeamMemberItem({ member }: TeamMemberItemProps) {
             </div>
           </div>
           <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2">
-            <div className="w-4 h-4 bg-white dark:bg-gray-900 border-r border-t border-gray-200 dark:border-gray-700 transform rotate-45"></div>
+            <div className="w-4 h-4 bg-background border-r border-t border-border transform rotate-45"></div>
           </div>
         </div>
       )}
 
       {isHovered && (
         <div className="sm:hidden mt-4 mx-4 animate-fadeIn">
-          <div className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="bg-background border border-border overflow-hidden">
             <div className="relative w-full h-40">
               {!imageError ? (
                 <Image
@@ -342,29 +343,29 @@ function TeamMemberItem({ member }: TeamMemberItemProps) {
                   priority
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <span className="text-white text-4xl font-bold">
+                <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                  <span className="text-foreground text-4xl font-bold">
                     {member.name.split(" ").map((n) => n[0]).join("")}
                   </span>
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-3">
-                <h3 className="text-white font-bold text-base">{member.name}</h3>
-                <p className="text-white/80 text-xs">{member.role}</p>
+                <h3 className="text-foreground font-bold text-base">{member.name}</h3>
+                <p className="text-muted-foreground text-xs mono">{member.role}</p>
               </div>
             </div>
             <div className="p-3">
               {member.bio && (
-                <p className="text-gray-600 dark:text-gray-400 text-xs mb-3">{member.bio}</p>
+                <p className="text-muted-foreground text-xs mb-3">{member.bio}</p>
               )}
               {hasSocials && (
-                <div className="flex items-center gap-4 pt-2 border-t border-gray-100 dark:border-gray-800">
-                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition-colors"><LinkedInIcon /></a>}
-                  {member.socials.github && <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"><GitHubIcon /></a>}
-                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-600 transition-colors"><InstagramIcon /></a>}
-                  {member.socials.twitter && <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"><TwitterIcon /></a>}
-                  {member.socials.website && <a href={member.socials.website} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-600 transition-colors"><WebsiteIcon /></a>}
+                <div className="flex items-center gap-4 pt-2 border-t border-border">
+                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}><LinkedInIcon /></a>}
+                  {member.socials.github && <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-foreground transition-colors" style={{ cursor: 'none' }}><GitHubIcon /></a>}
+                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}><InstagramIcon /></a>}
+                  {member.socials.twitter && <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-foreground transition-colors" style={{ cursor: 'none' }}><TwitterIcon /></a>}
+                  {member.socials.website && <a href={member.socials.website} target="_blank" rel="noopener noreferrer" className="cursor-target text-muted-foreground hover:text-accent transition-colors" style={{ cursor: 'none' }}><WebsiteIcon /></a>}
                 </div>
               )}
             </div>
@@ -398,10 +399,10 @@ export default function CompleteTeamSection({
       <section className={`team-section w-full py-16 md:py-24 ${className}`}>
         <div className="container mx-auto px-4 md:px-8">
           <header className="team-section-header mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground mb-4">
               {title}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
               {subtitle}
             </p>
           </header>
@@ -410,8 +411,8 @@ export default function CompleteTeamSection({
               <TeamMemberItem key={member.id} member={member} />
             ))}
           </div>
-          <footer className="team-section-footer mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+          <footer className="team-section-footer mt-8 pt-8 border-t border-border">
+            <p className="text-sm text-muted-foreground mono">
               {members.length} team members strong
             </p>
           </footer>

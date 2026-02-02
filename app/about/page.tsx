@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { MagicCard } from "@/components/ui/magic-card"
@@ -5,14 +7,18 @@ import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
-import { JoinUsButton } from "@/components/join-us-button";
 import {
   ABOUT_EVENTS,
   TEAM_MEMBERS,
   ABOUT_CONTENT,
+  FAQ_ITEMS,
 } from "@/lib/config";
 import { WordRotate } from "@/components/ui/word-rotate";
 import CompleteTeamSection from './complete';
+import { motion } from "framer-motion";
+import { CTASection } from "@/components/sections/cta-section";
+import { FAQSection } from "@/components/ui/faq-section";
+import { FeatureGrid } from "@/components/ui/feature-grid";
 
 interface NotificationProps {
   name: string;
@@ -59,18 +65,23 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Hero Section */}
-      <section className="relative flex h-[60vh] items-center justify-center">
-        <div className="flex flex-col items-center gap-6 text-center px-4">
+      <section className="relative flex min-h-[60vh] items-center justify-center">
+        <motion.div 
+          className="flex flex-col items-center gap-6 text-center px-4"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="mono text-accent text-xs tracking-widest">
+            ABOUT IOSD
+          </span>
           <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
             {ABOUT_CONTENT.hero.title}
           </h1>
           <p className="max-w-xl text-muted-foreground text-lg">
             {ABOUT_CONTENT.hero.subtitle}
           </p>
-          {/* <p className="max-w-[800px] text-lg font-medium text-primary">
-            &quot;We are a bunch of students pledged to enrich the development culture.&quot;
-          </p> */}
-        </div>
+        </motion.div>
         <DotPattern
           className={cn(
             "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
@@ -80,7 +91,7 @@ export default function AboutPage() {
       </section>
 
       {/* Velocity Scroll */}
-      <section className="py-10">
+      <section className="py-10 border-y border-border/40">
         <ScrollVelocityRow
           baseVelocity={3}
           className="text-center text-4xl font-light tracking-tight md:text-7xl"
@@ -90,31 +101,65 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Split */}
-      <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-light tracking-tight">{ABOUT_CONTENT.mission.title}</h2>
-            <p className="text-muted-foreground">
-              {ABOUT_CONTENT.mission.description}
-            </p>
-            <h2 className="text-3xl font-light tracking-tight pt-4">{ABOUT_CONTENT.vision.title}</h2>
-            <p className="text-muted-foreground">
-              {ABOUT_CONTENT.vision.description}
-            </p>
-          </div>
-          <div className="relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg border-none bg-background p-6 shadow-lg">
+      <section className="container mx-auto px-4 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div>
+              <span className="mono text-accent text-xs tracking-widest mb-4 block">
+                OUR PURPOSE
+              </span>
+              <h2 className="text-3xl font-light tracking-tight mb-4">{ABOUT_CONTENT.mission.title}</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {ABOUT_CONTENT.mission.description}
+              </p>
+            </div>
+            
+            <div className="border-t border-border pt-8">
+              <h2 className="text-3xl font-light tracking-tight mb-4">{ABOUT_CONTENT.vision.title}</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {ABOUT_CONTENT.vision.description}
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="relative flex h-[500px] w-full flex-col overflow-hidden border border-border bg-background p-6"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="mono text-xs text-muted-foreground mb-4 tracking-widest">
+              RECENT EVENTS
+            </div>
             <AnimatedList>
               {ABOUT_EVENTS.map((item, idx) => (
                 <Notification {...item} key={idx} />
               ))}
             </AnimatedList>
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* Team Section */}
       <section className="container mx-auto px-4 pt-24 pb-16">
-        <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden">
-          <div className="flex flex-col items-center gap-6 text-center px-5">
+        <section className="relative flex h-[50vh] w-full flex-col items-center justify-center overflow-hidden">
+          <motion.div 
+            className="flex flex-col items-center gap-6 text-center px-5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="mono text-accent text-xs tracking-widest">
+              THE TEAM
+            </span>
             <h1 className="text-5xl sm:text-7xl font-light tracking-tight leading-none">
               Meet the{" "}
               <WordRotate
@@ -125,72 +170,80 @@ export default function AboutPage() {
             <p className="max-w-xl text-muted-foreground text-lg">
               The people shaping IOSD - quietly, deliberately, together.
             </p>
-          </div>
+          </motion.div>
         </section>
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member, index) => (
-            <MagicCard
+            <motion.div
               key={index}
-              className="p-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className="flex flex-col items-center text-center">
-                {/* Avatar */}
-                <div className="relative mb-6 h-28 w-28 overflow-hidden border border-border">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                  />
+              <MagicCard className="p-8">
+                <div className="flex flex-col items-center text-center">
+                  {/* Avatar */}
+                  <div className="relative mb-6 h-28 w-28 overflow-hidden border border-border">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Name */}
+                  <h3 className="text-xl font-medium">
+                    {member.name}
+                  </h3>
+
+                  {/* Role */}
+                  <p className="mt-1 text-sm text-muted-foreground mono">
+                    {member.role}
+                  </p>
+
+                  {/* Socials */}
+                  <div className="mt-6 flex gap-5">
+                    {member.socials.github && (
+                      <a href={member.socials.github} className="text-muted-foreground hover:text-accent transition" target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    )}
+                    {member.socials.linkedin && (
+                      <a href={member.socials.linkedin} className="text-muted-foreground hover:text-accent transition" target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    )}
+                    {member.socials.twitter && (
+                      <a href={member.socials.twitter} className="text-muted-foreground hover:text-accent transition" target="_blank" rel="noopener noreferrer">
+                        <Twitter className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
                 </div>
-
-                {/* Name */}
-                <h3 className="text-xl font-medium">
-                  {member.name}
-                </h3>
-
-                {/* Role */}
-                <p className="mt-1 text-sm text-muted-foreground mono">
-                  {member.role}
-                </p>
-
-                {/* Socials */}
-                <div className="mt-6 flex gap-5">
-                  {member.socials.github && (
-                    <a href={member.socials.github} className="text-muted-foreground hover:text-foreground transition">
-                      <Github className="h-4 w-4" />
-                    </a>
-                  )}
-                  {member.socials.linkedin && (
-                    <a href={member.socials.linkedin} className="text-muted-foreground hover:text-foreground transition">
-                      <Linkedin className="h-4 w-4" />
-                    </a>
-                  )}
-                  {member.socials.twitter && (
-                    <a href={member.socials.twitter} className="text-muted-foreground hover:text-foreground transition">
-                      <Twitter className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </MagicCard>
+              </MagicCard>
+            </motion.div>
           ))}
         </div>
       </section>
 
-          <CompleteTeamSection />
+      <CompleteTeamSection />
+
+      {/* FAQ Section */}
+      <FAQSection 
+        items={FAQ_ITEMS} 
+        title="Common Questions"
+        subtitle="Everything you need to know about IOSD."
+      />
+
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <h2 className="text-3xl font-light tracking-tight">
-            {ABOUT_CONTENT.cta.title}
-          </h2>
-          <p className="max-w-xl text-muted-foreground">
-            {ABOUT_CONTENT.cta.description}
-          </p>
-          <JoinUsButton />
-        </div>
-      </section>
-      
+      <CTASection 
+        title="Want to be part of"
+        highlightedWord="IOSD?"
+        description={ABOUT_CONTENT.cta.description}
+      />
     </div>
   )
 }

@@ -13,7 +13,7 @@ export function Footer() {
 
   return (
     <footer 
-      className="relative w-full overflow-hidden border-t border-[var(--border-subtle)] bg-background mb-16"
+      className="relative w-full overflow-hidden border-t border-[var(--border-subtle)] bg-background"
       onMouseMove={(e) => {
         mouseX.set(e.pageX)
         mouseY.set(e.pageY)
@@ -100,6 +100,9 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-accent/2 to-transparent pointer-events-none" />
     </footer>
   )
 }
