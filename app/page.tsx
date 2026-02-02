@@ -2,13 +2,7 @@
 
 import { Globe } from "@/components/ui/globe";
 import { RetroGrid } from "@/components/ui/retro-grid";
-import {
-  ABOUT_STATS,
-  GALLERY_PREVIEW,
-  FAQ_ITEMS,
-} from "@/lib/config";
-import { NumberTicker } from "@/components/ui/number-ticker";
-import { Testimonial } from "@/components/ui/design-testimonial";
+import { FAQ_ITEMS } from "@/lib/config";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { WhatWeOffer } from "@/components/sections/what-we-offer";
@@ -16,6 +10,8 @@ import { TrustedBy } from "@/components/sections/trusted-by";
 import { CTASection } from "@/components/sections/cta-section";
 import { FAQSection } from "@/components/ui/faq-section";
 import { DomainsSection } from "@/components/sections/domains-section";
+import { StatsSection } from "@/components/sections/stats-section";
+import { GallerySection } from "@/components/sections/gallery-section";
 
 export default function Home() {
   return (
@@ -35,7 +31,7 @@ export default function Home() {
             alt="IOSD Logo"
             width={1079}
             height={280}
-            className="h-auto w-auto max-w-[80vw] sm:max-w-lg md:max-w-xl object-contain scale-140"
+            className="h-auto w-auto max-w-[85vw] sm:max-w-xl md:max-w-3xl object-contain"
             priority
           />
           <motion.div 
@@ -72,59 +68,17 @@ export default function Home() {
       {/* Trusted By / Alumni Work At */}
       <TrustedBy />
 
-      {/* What We Offer */}
-      {/* <WhatWeOffer /> */}
+      {/* What We Offer - Broad Benefits */}
+      <WhatWeOffer />
 
-      {/* Technical Domains */}
+      {/* Technical Domains - Specific Tracks */}
       <DomainsSection />
 
-      {/* Testimonials Section */}
-      {/* <section className="w-full border-y border-border/40">
-        <Testimonial />
-      </section> */}
-
       {/* Stats Section */}
-      <section className="container mx-auto px-4 py-32">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="mono text-accent text-xs tracking-widest mb-4 block">
-            IMPACT
-          </span>
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight">
-            Our Numbers
-          </h2>
-        </motion.div>
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
-          {ABOUT_STATS.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative border border-border bg-background p-6 transition-all hover:-translate-y-1 hover:border-accent/50"
-            >
-              <div className="absolute left-0 top-0 h-full w-[2px] bg-accent" />
+      <StatsSection />
 
-              <stat.Icon className="h-6 w-6 text-foreground mb-6" />
-
-              <h3 className="text-5xl font-light tracking-tight tabular-nums">
-                <NumberTicker value={stat.value} />
-                <span className="text-3xl align-super text-accent">+</span>
-              </h3>
-
-              <p className="mt-3 mono text-muted-foreground">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* FAQ Section */}
       <FAQSection 
@@ -132,53 +86,6 @@ export default function Home() {
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about joining IOSD."
       />
-
-      {/* Gallery Section */}
-      <section className="container mx-auto px-4 py-24">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <a
-            href="/gallery"
-            className="inline-block text-3xl font-light tracking-tight text-center transition-colors hover:text-accent cursor-target"
-            style={{ cursor: 'none' }}
-          >
-            Gallery
-            <span className="block mono text-xs text-muted-foreground mt-2 tracking-widest">
-              VIEW ALL →
-            </span>
-          </a>
-        </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {GALLERY_PREVIEW.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              {item.label && (
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-white font-medium">{item.label}</p>
-                </div>
-              )}
-              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* Footer CTA */}
       <CTASection />
