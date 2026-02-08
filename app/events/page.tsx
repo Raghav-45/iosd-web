@@ -30,15 +30,15 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent">
       {/* Hero */}
       <section className="relative flex h-[60vh] items-center justify-center">
         <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
-          <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
+          <h1 className="text-4xl sm:text-7xl font-light tracking-tight border-b border-blue-500/20 pb-2 px-6">
             Events
           </h1>
 
-          <p className="max-w-xl text-muted-foreground text-lg">
+          <p className="max-w-xl text-muted-foreground text-base sm:text-lg">
             Workshops, hackathons, talks, and everything that shapes the IOSD community.
           </p>
         </div>

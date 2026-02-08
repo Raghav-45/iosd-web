@@ -21,29 +21,40 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background font-sans selection:bg-accent selection:text-background">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent font-sans selection:bg-accent selection:text-background">
       {/* <ScrollProgress className="top-0" /> */}
 
       {/* Hero Section */}
-      <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden pb-20 pt-10 md:pb-32">
-        <RetroGrid />
+      <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden pb-10 md:pb-32 pt-20">
+        <RetroGrid
+          className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)] opacity-30"
+        />
 
-        <div className="z-10 flex flex-col items-center gap-6 text-center px-4 w-full">
-          <Image
-            src="/IOSD_HD.png"
-            alt="IOSD Logo"
-            width={1079}
-            height={280}
-            className="h-auto w-auto max-w-[80vw] sm:max-w-lg md:max-w-xl object-contain animate-fade-in scale-140"
-            priority
-          />
-          <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl">
+        <div className="z-10 flex flex-col items-center gap-8 text-center px-6 w-full mt-[-50vh] md:mt-0">
+          <div className="relative flex items-center justify-center w-full">
+            {/* Mobile Globe - Centered behind logo */}
+            <div className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none opacity-60 scale-150">
+              <Globe />
+            </div>
+
+            <Image
+              src="/IOSD_HD.png"
+              alt="IOSD Logo"
+              width={1079}
+              height={280}
+              className="h-auto w-auto max-w-[85vw] sm:max-w-lg md:max-w-xl object-contain animate-fade-in scale-110 md:scale-140 z-10"
+              priority
+            />
+          </div>
+
+          <div className="text-lg sm:text-2xl md:text-3xl font-light text-muted-foreground max-w-2xl px-4 z-10 bg-background/20 backdrop-blur-[2px] rounded-full py-1">
             Maharaja Agrasen Institute of Technology
             <br className="hidden sm:block" />
-          </div>
+          </div> 
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-[500px] w-full translate-y-[20%] opacity-40 md:opacity-60 pointer-events-none">
+        {/* Desktop Globe - Bottom anchored */}
+        <div className="hidden md:block absolute bottom-0 left-0 right-0 h-[500px] w-full translate-y-[20%] opacity-60 pointer-events-none">
           <Globe className="top-20" />
         </div>
       </section>
@@ -73,18 +84,18 @@ export default function Home() {
             <p className="text-muted-foreground text-lg max-w-lg">
               {ABOUT_PREVIEW.description}
             </p>
-            
+
             {/* Highlights */}
             <div className="flex flex-wrap gap-4 pt-4">
               {ABOUT_PREVIEW.highlights.map((item, i) => (
-                <span key={i} className="mono text-xs px-4 py-2 border border-border bg-surface-1">
+                <span key={i} className="mono text-xs px-4 py-2 border border-blue-500/20 md:border-border bg-surface-1">
                   {item}
                 </span>
               ))}
             </div>
-            
+
             {/* Creative Link - Line that extends on hover */}
-            <Link 
+            <Link
               href="/about"
               className="group/line inline-flex items-center gap-4 pt-8 cursor-target"
               style={{ cursor: 'none' }}
@@ -96,7 +107,7 @@ export default function Home() {
               <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover/line:opacity-100 group-hover/line:translate-x-0 group-hover/line:text-accent transition-all duration-300" />
             </Link>
           </div>
-          
+
           {/* Accent Image */}
           <div className="col-span-12 lg:col-span-5 relative">
             <div className="relative aspect-[3/4] overflow-hidden group">
@@ -121,23 +132,23 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="container mx-auto px-4 py-32">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
+      <section className="container mx-auto px-6 py-24 md:py-32">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {ABOUT_STATS.map((stat, index) => (
             <div
               key={index}
-              className="group relative border border-border bg-background p-6 transition-all hover:-translate-y-1 hover:border-border"
+              className="group relative border border-blue-500/30 md:border-border bg-background p-8 transition-all hover:-translate-y-1 hover:border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)] md:shadow-none"
             >
-              <div className="absolute left-0 top-0 h-full w-[2px] bg-accent" />
+              <div className="absolute left-0 top-0 h-full w-[3px] bg-blue-500 md:bg-accent" />
 
-              <stat.Icon className="h-6 w-6 text-foreground mb-6" />
+              <stat.Icon className="h-7 w-7 text-blue-500 md:text-foreground mb-8" />
 
               <h3 className="text-5xl font-light tracking-tight tabular-nums">
                 <NumberTicker value={stat.value} />
-                <span className="text-3xl align-super">+</span>
+                <span className="text-3xl align-super text-blue-500/80 md:text-inherit">+</span>
               </h3>
 
-              <p className="mt-3 mono text-muted-foreground">
+              <p className="mt-4 mono text-sm text-muted-foreground tracking-wider uppercase">
                 {stat.label}
               </p>
             </div>
@@ -162,7 +173,7 @@ export default function Home() {
           {GALLERY_PREVIEW.map((item, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden bg-muted group cursor-pointer ${item.gridClass}`}
+              className={`relative overflow-hidden bg-muted group cursor-pointer border border-blue-500/20 md:border-transparent ${item.gridClass}`}
             >
               <Image
                 src={item.src}
@@ -182,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* Footer CTA */}
-      <section className="relative py-24 flex flex-col items-center justify-center text-center px-4 border-t border-border/40 bg-background/50 backdrop-blur-sm">
+      <section className="relative py-24 flex flex-col items-center justify-center text-center px-4 border-t border-border/40 bg-transparent backdrop-blur-sm">
         <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">
           Ready to <span className="text-accent">Build?</span>
         </h2>

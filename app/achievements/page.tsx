@@ -162,10 +162,14 @@ const page = async ({ searchParams }: PageProps) => {
     }
 
     return (
-        <div className='min-h-screen w-full flex flex-col items-center justify-start gap-8 py-8 px-4'>
-            <MatrixText text='Achievements'/>
-            <AchievementCards cards={filteredAchievements} />
-
+        <div className='min-h-screen w-full flex flex-col items-center justify-start gap-12 py-16 px-6 bg-transparent'>
+            <div className="flex flex-col items-center gap-4 text-center">
+                <MatrixText text='Achievements' />
+                <div className="w-24 h-1 bg-blue-500/30 rounded-full mt-[-8px]" />
+            </div>
+            <div className="w-full max-w-5xl">
+                <AchievementCards cards={filteredAchievements} />
+            </div>
         </div>
     )
 }

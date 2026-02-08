@@ -1,8 +1,5 @@
 import { cn } from "@/lib/utils";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { MagicCard } from "@/components/ui/magic-card"
-import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
-import { AnimatedList } from "@/components/ui/animated-list";
 import { Github, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
 import { JoinUsButton } from "@/components/join-us-button";
@@ -30,7 +27,7 @@ const Notification = ({ name, description, icon, color, time }: NotificationProp
       className={cn(
         "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden p-4",
         "transition-all duration-200 ease-in-out hover:scale-[1.03]",
-        "border border-border bg-background backdrop-blur-md"
+        "border border-blue-500/40 md:border-border bg-background backdrop-blur-md shadow-[0_0_10px_rgba(59,130,246,0.05)] md:shadow-none"
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -59,14 +56,14 @@ const Notification = ({ name, description, icon, color, time }: NotificationProp
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent">
       {/* Hero Section */}
-      <section className="relative flex h-[60vh] items-center justify-center">
-        <div className="flex flex-col items-center gap-6 text-center px-4">
-          <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
+      <section className="relative flex h-[50vh] md:h-[60vh] items-center justify-center">
+        <div className="flex flex-col items-center gap-6 text-center px-6">
+          <h1 className="text-4xl sm:text-7xl font-light tracking-tight px-4 border-b border-blue-500/20 pb-4">
             {ABOUT_CONTENT.hero.title}
           </h1>
-          <p className="max-w-xl text-muted-foreground text-lg">
+          <p className="max-w-xl text-muted-foreground text-base sm:text-lg">
             {ABOUT_CONTENT.hero.subtitle}
           </p>
           {/* <p className="max-w-[800px] text-lg font-medium text-primary">
@@ -104,7 +101,7 @@ export default function AboutPage() {
               ))}
             </AnimatedList>
           </div> */}
-          
+
           {/* Placeholder Image */}
           <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden border border-border bg-muted/20">
             <div className="flex flex-col items-center gap-4 text-muted-foreground/50">
@@ -118,25 +115,19 @@ export default function AboutPage() {
       </section>
 
       <section className="container mx-auto px-4 pt-24 pb-16">
-        <section className="relative flex h-[60vh] w-full flex-col items-center justify-center overflow-hidden">
-          <div className="flex flex-col items-center gap-6 text-center px-5">
-            <h1 className="text-5xl sm:text-7xl font-light tracking-tight leading-none">
-              Meet the{" "}
-              <WordRotate
-                className="inline-block font-light text-foreground"
-                words={["Builders", "Engineers", "Thinkers"]}
-              />
-            </h1>
-            <p className="max-w-xl text-muted-foreground text-lg">
-              The people shaping IOSD - quietly, deliberately, together.
-            </p>
-          </div>
-        </section>
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col items-center gap-6 text-center mb-16 px-5">
+          <h1 className="text-5xl sm:text-7xl font-light tracking-tight leading-none">
+            Meet the Team
+          </h1>
+          <p className="max-w-xl text-muted-foreground text-lg">
+            The people shaping IOSD - quietly, deliberately, together.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member, index) => (
-            <MagicCard
+            <div
               key={index}
-              className="p-8"
+              className="p-8 border border-blue-500/20 rounded-lg bg-slate-900/40 transition-colors hover:border-blue-500/40"
             >
               <div className="flex flex-col items-center text-center">
                 {/* Avatar */}
@@ -177,14 +168,14 @@ export default function AboutPage() {
                   )}
                 </div>
               </div>
-            </MagicCard>
+            </div>
           ))}
         </div>
       </section>
 
       <CompleteTeamSection />
 
-      
+
       {/* Domains Bento Grid */}
       <section className="container mx-auto px-4 py-24">
         <h2 className="mb-12 text-3xl font-light tracking-tight text-center">
@@ -197,7 +188,7 @@ export default function AboutPage() {
         </BentoGrid>
       </section>
 
-      
+
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-24">
         <div className="flex flex-col items-center gap-6 text-center">

@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     quote: "aap yaha aajayein",
-    author: "Javed Akhtar",
+    author: "Farahan Akhtar (validation by Javed Akhtar)",
     role: "Actor",
     company: "IOSD",
   },

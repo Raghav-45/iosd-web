@@ -17,13 +17,13 @@ export default function GalleryPage() {
         : GALLERY_IMAGES.filter((img) => img.category === filter);
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-transparent">
             {/* Header */}
-            <div className="container mx-auto px-4 py-24">
-                <h1 className="text-5xl sm:text-7xl font-light tracking-tight text-center mb-4">
+            <div className="container mx-auto px-6 py-24 flex flex-col items-center">
+                <h1 className="text-4xl sm:text-7xl font-light tracking-tight text-center mb-6 border-b border-blue-500/20 pb-2 px-6">
                     Gallery
                 </h1>
-                <p className="text-center text-muted-foreground text-lg mb-8">
+                <p className="text-center text-muted-foreground text-base sm:text-lg mb-8 max-w-xl">
                     Moments captured from our events, workshops, and activities
                 </p>
 
@@ -42,7 +42,7 @@ export default function GalleryPage() {
                                     "hover:text-foreground",
                                     isActive && [
                                         "text-foreground",
-                                        "border-accent",
+                                        "border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]",
                                     ]
                                 )}
                             >
@@ -61,7 +61,7 @@ export default function GalleryPage() {
                             className="break-inside-avoid cursor-pointer group"
                             onClick={() => setSelectedImage(image)}
                         >
-                            <div className="relative overflow-hidden rounded-lg bg-muted">
+                            <div className="relative overflow-hidden rounded-lg bg-muted border border-blue-500/10 md:border-transparent group-hover:border-blue-500/30 transition-all">
                                 <Image
                                     src={image.src}
                                     alt={image.alt}

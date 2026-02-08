@@ -73,15 +73,15 @@ const avatarUrls = [
 
 export default function AlumniPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent">
       {/* Hero */}
       <section className="relative flex h-[60vh] items-center justify-center">
         <div className="z-10 flex flex-col items-center gap-6 text-center px-4">
-          <h1 className="text-5xl sm:text-7xl font-light tracking-tight">
+          <h1 className="text-4xl sm:text-7xl font-light tracking-tight border-b border-blue-500/20 pb-2 px-6">
             IOSD Alumni
           </h1>
 
-          <p className="max-w-xl text-muted-foreground text-lg">
+          <p className="max-w-xl text-muted-foreground text-base sm:text-lg">
             Generations of builders, engineers, and leaders -connected by craft.
           </p>
 
@@ -95,8 +95,8 @@ export default function AlumniPage() {
 
         <DotPattern
           className={cn(
-            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
-            "opacity-40"
+            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent_70%)]",
+            "opacity-20"
           )}
         />
       </section>
@@ -108,7 +108,7 @@ export default function AlumniPage() {
         </h2>
 
         <div className="grid gap-16 md:grid-cols-2">
-          <div>
+          <div className="border-b pb-4 border-blue-400/40">
             <h3 className="text-xl font-medium">
               Technical Excellence
             </h3>
@@ -118,7 +118,7 @@ export default function AlumniPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-b pb-4 border-blue-400/40">
             <h3 className="text-xl font-medium">
               Leadership & Ownership
             </h3>
@@ -128,7 +128,7 @@ export default function AlumniPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-b pb-4 border-blue-400/40">
             <h3 className="text-xl font-medium">
               Global Footprint
             </h3>
@@ -138,7 +138,7 @@ export default function AlumniPage() {
             </p>
           </div>
 
-          <div>
+          <div className="border-b pb-4 border-blue-400/40">
             <h3 className="text-xl font-medium">
               Giving Back
             </h3>
@@ -172,11 +172,11 @@ export default function AlumniPage() {
                 key={company.name}
                 className={cn(
                   "mx-6 flex h-16 w-40 items-center justify-center",
-                  "border border-border text-sm mono",
-                  "text-muted-foreground hover:text-foreground transition"
+                  "border border-blue-500/20 md:border-border text-sm mono",
+                  "text-muted-foreground hover:text-foreground transition hover:border-blue-500/40"
                 )}
               >
-                <Image src={company.logo} alt={company.name} width={34} height={34} className="max-w-fit max-h-6 mr-3"/>
+                <Image src={company.logo} alt={company.name} width={34} height={34} className="max-w-fit max-h-6 mr-3" />
                 {company.name}
               </div>
             ))}

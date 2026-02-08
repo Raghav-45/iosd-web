@@ -11,7 +11,7 @@
   --radius: 0px;
 
   /* Core colors */
-  --background: oklch(0 0 0);
+  --background: transparent;
   --foreground: oklch(1 0 0);
 
   /* Surfaces */
@@ -98,6 +98,9 @@
     }
   }
 
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-border-beam: border-beam var(--duration) infinite linear;
+
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -117,6 +120,12 @@
       transform: translateY(calc(-100% - var(--gap)));
     }
   }
+
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
 }
 
 
@@ -130,6 +139,11 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    background: linear-gradient(to bottom,
+        oklch(0.2 0.05 220) 0%,
+        oklch(0 0 0) 40%,
+        oklch(0 0 0) 56%,
+        oklch(0 0 0) 100%);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -280,25 +294,25 @@
 
 /* Gradient utility classes — IOSD themed */
 .bg-gradient-flame {
-  background-image: linear-gradient(135deg, 
-    oklch(0.78 0.12 220) 0%, 
-    oklch(0.55 0.1 220) 100%);
+  background-image: linear-gradient(135deg,
+      oklch(0.78 0.12 220) 0%,
+      oklch(0.55 0.1 220) 100%);
 }
 
 .bg-gradient-sunset {
-  background-image: linear-gradient(135deg, 
-    oklch(0.78 0.12 220 / 0.8) 0%, 
-    oklch(0.65 0.08 220) 100%);
+  background-image: linear-gradient(135deg,
+      oklch(0.78 0.12 220 / 0.8) 0%,
+      oklch(0.65 0.08 220) 100%);
 }
 
 .bg-gradient-ocean {
-  background-image: linear-gradient(135deg, 
-    oklch(0.78 0.12 220) 0%, 
-    oklch(0.5 0.12 220) 100%);
+  background-image: linear-gradient(135deg,
+      oklch(0.78 0.12 220) 0%,
+      oklch(0.5 0.12 220) 100%);
 }
 
 .bg-gradient-midnight {
-  background-image: linear-gradient(135deg, 
-    oklch(0.15 0 0) 0%, 
-    oklch(0.25 0 0) 100%);
+  background-image: linear-gradient(135deg,
+      oklch(0.15 0 0) 0%,
+      oklch(0.25 0 0) 100%);
 }

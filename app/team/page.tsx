@@ -8,8 +8,10 @@ type Props = {}
 
 const Team = (props: Props) => {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-     <TargetCursor />
+    <div className="w-full h-screen overflow-hidden bg-transparent">
+      <div className="hidden md:block">
+        <TargetCursor />
+      </div>
       <DomeGallery />
     </div>
   )

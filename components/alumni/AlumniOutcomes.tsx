@@ -1,3 +1,5 @@
+import { BorderBeam } from "@/components/ui/border-beam"
+
 type Outcome = {
   label: string
   value: number
@@ -27,7 +29,8 @@ export function AlumniOutcomes({
       {/* Outcomes */}
       <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
         {outcomes.map((outcome, i) => (
-          <div key={i}>
+          <div key={i} className="relative overflow-hidden border border-blue-500/10 p-6 rounded-lg bg-transparent transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500/5 group">
+            <BorderBeam size={150} duration={10} delay={i * 1.5} />
             <p className="text-5xl font-light tracking-tight tabular-nums">
               {outcome.value}
             </p>
